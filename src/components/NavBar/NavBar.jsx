@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
@@ -9,47 +10,36 @@ function NavBar({ user, setUser }) {
   }
 
   return (
-    <div id="colorlib-page">
-      <a href="/" class="js-colorlib-nav-toggle colorlib-nav-toggle">
-        <i></i>
-      </a>
-      <aside
-        id="colorlib-aside"
-        role="complementary"
-        className="js-fullheight img"
-        style={{ backgroundImage: "url(images/sidebar-bg.jpg)" }}
-      >
-        <h1 id="colorlib-logo" className="mb-4">
-          <a href="/">Hike-U</a>
-        </h1>
-        <nav id="colorlib-main-menu" role="navigation">
-          <ul>
-            <li class="colorlib-active">
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/journal">Journal</Link>
-            </li>
-            <li>
-              <Link to="/equipment">Equipment</Link>
-            </li>
-            <li>
-              <Link to="/adventures">Start Adventure</Link>
-            </li>
-            <li>
-              <Link to="" onClick={handleLogOut}>
-                Log Out
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="colorlib-footer">
-          <div className="mb-4">
-            <h3>Subscribe for Hike-U</h3>
-          </div>
-        </div>
-      </aside>
+    <div className="bg-white sidebar p-2">
+      <div className="m-2">
+        <i className="bi bi-bootstrap-fill me-3 fs-4"></i>
+        <Link to="/">Hike-U</Link>
+      </div>
+      <hr className="text-dark" />
+      <div className="list-group list-group-flush">
+        <a className="list-group-item py-2">
+          <i className="bi bi-speedometer2 fs-5 me-3"></i>
+          <Link to="/">Home</Link>
+        </a>
+        <a className="list-group-item py-2 ">
+          <i className="bi bi-house fs-5 me-3"></i>
+          <Link to="/journal">Journal</Link>
+        </a>
+        <a className="list-group-item py-2">
+          <i className="bi bi-table fs-5 me-3"></i>
+          <Link to="/equipment">Equipment</Link>
+        </a>
+        <a className="list-group-item py-2">
+          <i className="bi bi-clipboard-data fs-5 me-3"></i>
+          <Link to="/adventures">Start Adventure</Link>
+        </a>
+        <a className="list-group-item py-2">
+          <i className="bi bi-people fs-5 me-3"></i>
+          <Link to="" onClick={handleLogOut}>
+            Log Out
+          </Link>
+        </a>
+      </div>
     </div>
   );
 }

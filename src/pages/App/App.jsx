@@ -13,20 +13,30 @@ function App() {
   const [user, setUser] = useState(getUser());
 
   return (
-    <main className="App">
-      {user ? (
-        <>
-          <NavBar user={user} setUser={setUser} />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/journal" element={<JournalPage />} />
-            <Route path="/journals/new" element={<JournalFormPage />} />
-          </Routes>
-        </>
-      ) : (
-        <AuthPage setUser={setUser} />
-      )}
-    </main>
+    <div className="container-fluid bg-secondary min-vh-100 ">
+      <div className="row ">
+        <main className="App">
+          {user ? (
+            <>
+              <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
+                <NavBar user={user} setUser={setUser} />
+              </div>
+
+              <div className="col-4 col-md-2"></div>
+              <div className="col">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/journal" element={<JournalPage />} />
+                  <Route path="/journals/new" element={<JournalFormPage />} />
+                </Routes>
+              </div>
+            </>
+          ) : (
+            <AuthPage setUser={setUser} />
+          )}
+        </main>
+      </div>
+    </div>
   );
 }
 
