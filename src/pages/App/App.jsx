@@ -6,6 +6,8 @@ import AuthPage from "../AuthPage/AuthPage";
 import NavBar from "../../components/NavBar/NavBar";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import HomePage from "../HomePage/HomePage";
+import JournalPage from "../JournalPage/JournalPage";
+import JournalFormPage from "../JournalFormPage/JournalFormPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -17,6 +19,8 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/journal" element={<JournalPage />} />
+            <Route path="/journals/new" element={<JournalFormPage />} />
           </Routes>
         </>
       ) : (
