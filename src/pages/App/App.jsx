@@ -7,6 +7,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import HomePage from "../HomePage/HomePage";
 import EquipmentPage from "../EquipmentPage/EquipmentPage";
+import JournalPage from "../JournalPage/JournalPage";
+import JournalFormPage from "../JournalFormPage/JournalFormPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/equipment" element={ <EquipmentPage /> } />
+            <Route path="/journal" element={<JournalPage />} />
+            <Route path="/journals/new" element={<JournalFormPage />} />
           </Routes>
         </>
       ) : (
