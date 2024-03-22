@@ -3,10 +3,9 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../../components/AuthPage/AuthPage';
-import NewOrderPage from '../../components/NewOrderPage/NewOrderPage';
-import OrderHistroryPage from '../../components/OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/NavBar/NavBar';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import HomePage from '../HomePage/HomePage';
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -17,8 +16,7 @@ function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/orders/new" element={< NewOrderPage /> } />
-            <Route path="/orders" element={ < OrderHistroryPage /> } />
+            <Route path="/" element={< HomePage /> } />
           </Routes>
         </>
         :
