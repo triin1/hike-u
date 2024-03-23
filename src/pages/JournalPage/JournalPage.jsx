@@ -30,14 +30,18 @@ export default function JournalPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Journal</h1>
-      {/* going to create journal form page !!! */}
-      <Link to="/journals/new">
-        <button>Create Journal</button>
-      </Link>
+    <div className="container-fluid">
+      <div className="row">
+        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <h1>Journal</h1>
+          {/* going to create journal form page !!! */}
+          <Link to="/journals/new">
+            <button>Create Journal</button>
+          </Link>
 
-      <JournalList journalList={journalList} />
+          <JournalList journalList={journalList} />
+        </main>
+      </div>
     </div>
   );
 }

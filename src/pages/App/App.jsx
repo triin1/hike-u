@@ -22,7 +22,6 @@ function App() {
               <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
                 <NavBar user={user} setUser={setUser} />
               </div>
-
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/equipment" element={<EquipmentPage />} />
