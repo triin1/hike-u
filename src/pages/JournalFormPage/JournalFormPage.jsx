@@ -13,13 +13,8 @@ export default function JournalFormPage() {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <h1>Leave your memory</h1>
-          <JournalForm addJournal={addJournal} />
-        </main>
-      </div>
+    <div>
+      <JournalForm addJournal={addJournal} />
     </div>
   );
 }

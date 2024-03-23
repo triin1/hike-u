@@ -2,15 +2,23 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
+import "./NavBar.css";
+import React, { useState } from "react";
 
-function NavBar({ user, setUser }) {
-  function handleLogOut() {
+const NavBar = ({ user, setUser }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleLogOut = () => {
     userService.logOut();
     setUser(null);
-  }
+  };
 
   return (
-    <div className="bg-white sidebar p-2">
+    <aside className={`sidebar ${isOpen ? "open" : ""}`}>
       <a
         href="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
@@ -19,47 +27,45 @@ function NavBar({ user, setUser }) {
         <span className="fs-4">Hike-U</span>
       </a>
       <hr />
-      <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page">
-            <Link to="/">Home</Link>
-          </a>
-        </li>
-        <li>
-          <a className="nav-link link-dark">
-            <Link to="/equipment">Equipment</Link>
-          </a>
-        </li>
-        <li>
-          <a className="nav-link link-dark">
-            <Link to="/journal">Journal</Link>
-          </a>
-        </li>
-        <li>
-          <a className="nav-link link-dark">
-            <Link to="/adventures">Start Adventure</Link>
-          </a>
-        </li>
-      </ul>
-      <hr />
-      <div className="dropdown">
-        <a
-          className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <strong>{user.name}</strong>
-        </a>
-        <ul className="dropdown-menu text-small shadow">
-          <li>
-            <Link to="" onClick={handleLogOut} className="dropdown-item">
-              Log Out
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        &#9776;
+      </button>
+      <nav className={`nav flex-column`}>
+        <Link className="nav-link active" to="/">
+          Home
+        </Link>
+        <Link className="nav-link" to="/journal">
+          Journal
+        </Link>
+        <Link className="nav-link" to="/equipment">
+          Equipment
+        </Link>
+
+        <Link className="nav-link" to="/adventures">
+          Start Adventure
+        </Link>
+
+        <div className="sidebar-bottom nav-link">
+          <div className="dropdown">
+            <a
+              className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <strong>{user.name}</strong>
+            </a>
+            <ul className="dropdown-menu text-small shadow">
+              <li>
+                <Link to="" onClick={handleLogOut} className="dropdown-item">
+                  Log Out
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </aside>
   );
-}
+};
 
 export default NavBar;

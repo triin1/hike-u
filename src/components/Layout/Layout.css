@@ -1,0 +1,21 @@
+.main-content header {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.main-content section {
+  background-color: #fff;
+  padding: 20px;
+}
+.main-content {
+  padding: 0;
+  transition: margin-left 0.3s;
+  margin-top: 60px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 250px;
+    margin-top: 0;
+  }
+}

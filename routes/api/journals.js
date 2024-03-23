@@ -9,4 +9,7 @@ router.post("/new", journalsCtrl.create);
 // GET /api/journals
 router.get("/", journalsCtrl.index);
 
+// DELETE /api/journals/:id
+router.delete("/:id", journalsCtrl.delete);
+
 module.exports = router;

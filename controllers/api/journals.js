@@ -5,13 +5,12 @@ async function create(req, res) {
     const journal = await Journal.create({
       //specify the property in req.body
       title: req.body.title,
+      image: req.body.image,
       date: req.body.date,
       difficulty: req.body.difficulty,
       content: req.body.content,
       user: req.user._id,
     });
-
-    await journal.populate("user").execPopulate();
 
     res.json(journal);
   } catch (err) {
@@ -21,8 +20,17 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    const journals = await Journal.find({});
+    const journals = await Journal.find({}).populate("user");
     res.json(journals);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deleteJournal(req, res) {
+  try {
+    await Journal.deleteOne({ _id: req.params.id, user: req.user._id });
+    res.json(true);
   } catch (err) {
     console.log(err);
   }
@@ -31,5 +39,5 @@ async function index(req, res) {
 module.exports = {
   create,
   index,
-  //     delete: deleteNote,
+  delete: deleteJournal,
 };
