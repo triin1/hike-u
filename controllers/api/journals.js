@@ -5,7 +5,7 @@ async function create(req, res) {
     const journal = await Journal.create({
       //specify the property in req.body
       title: req.body.title,
-      image: req.body.image,
+      // image: req.body.image,
       date: req.body.date,
       difficulty: req.body.difficulty,
       content: req.body.content,
