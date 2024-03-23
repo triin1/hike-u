@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function JournalForm({ addJournal }) {
   const [newJournal, setNewJournal] = useState({
     title: "",
+    image: "",
     date: "",
     difficulty: "",
     content: "",
@@ -61,7 +62,7 @@ export default function JournalForm({ addJournal }) {
                   id="image"
                   value={newJournal.image}
                   onChange={(event) =>
-                    setNewJournal({ ...newJournal, date: event.target.value })
+                    setNewJournal({ ...newJournal, date: event.target.files })
                   }
                   accept="image/*"
                 />

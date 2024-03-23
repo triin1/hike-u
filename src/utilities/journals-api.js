@@ -1,5 +1,4 @@
 import sendRequest from "./send-request";
-
 const BASE_URL = "/api/journals";
 
 export function createJournal(journalData) {
