@@ -23,15 +23,12 @@ function App() {
                 <NavBar user={user} setUser={setUser} />
               </div>
 
-              <div className="col-4 col-md-2"></div>
-              <div className="col">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/equipment" element={<EquipmentPage />} />
-                  <Route path="/journal" element={<JournalPage />} />
-                  <Route path="/journals/new" element={<JournalFormPage />} />
-                </Routes>
-              </div>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/equipment" element={<EquipmentPage />} />
+                <Route path="/journal" element={<JournalPage />} />
+                <Route path="/journals/new" element={<JournalFormPage />} />
+              </Routes>
             </>
           ) : (
             <AuthPage setUser={setUser} />
