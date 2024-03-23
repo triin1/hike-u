@@ -14,9 +14,9 @@ function App() {
   const [user, setUser] = useState(getUser());
 
   return (
-    <div className="container-fluid bg-secondary min-vh-100 ">
-      <div className="row ">
-        <main className="App">
+    <main className="App">
+      <div className="container-fluid bg-secondary min-vh-100 ">
+        <div className="row ">
           {user ? (
             <>
               <div className="col-4 col-md-2 bg-white vh-100 position-fixed">
@@ -33,9 +33,9 @@ function App() {
           ) : (
             <AuthPage setUser={setUser} />
           )}
-        </main>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
