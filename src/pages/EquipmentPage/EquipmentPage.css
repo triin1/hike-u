@@ -1,4 +1,21 @@
+.item-a {
+    grid-area: header;
+    text-align: center;
+}
+
+.item-b {
+    grid-area: main
+}
+
+.item-c {
+    grid-area: side
+}
+
 .equipment-container {
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header"
+        "main    side"
 }
