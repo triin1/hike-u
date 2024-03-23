@@ -9,45 +9,45 @@ export default function JournalList({ journalList, handleDelete }) {
   }
 
   const list = journalList.map((journal) => (
-    <div class="col" key={journal._id}>
-      <div class="card mb-3" style={{ maxWidth: "540px" }}>
-        <div class="row g-0">
-          <div class="col-md-4">
+    <div className="col" key={journal._id}>
+      <div className="card mb-3" style={{ maxWidth: "540px" }}>
+        <div className="row g-0">
+          <div className="col-md-4">
             <img
               src="./images/test.jpg"
-              class="img-fluid rounded-start"
+              className="img-fluid rounded-start"
               alt="..."
             />
           </div>
-          <div class="col-md-8">
+          <div className="col-md-8">
             {/* delelte journal */}
             <button
               type="submit"
-              class="btn-close btn-close-dark"
+              className="btn-close btn-close-dark"
               aria-label="Close"
               onClick={() => handleDelete(journal._id)}
             ></button>
 
-            <div class="card-body">
-              <h5 class="card-title">{journal.title}</h5>
+            <div className="card-body">
+              <h5 className="card-title">{journal.title}</h5>
 
-              <p class="card-text">
-                <small class="text-muted">
+              <p className="card-text">
+                <small className="text-muted">
                   {new Date(journal.date).toLocaleDateString()} |{" "}
                   {journal.user.name} | {journal.difficulty}
                 </small>
               </p>
 
-              <p class="card-text">{journal.content}</p>
+              <p className="card-text">{journal.content}</p>
 
               <p>
-                <a href="#" class="btn-custom">
-                  Read More <span class="ion-ios-arrow-forward"></span>
+                <a href="#" className="btn-custom">
+                  Read More <span className="ion-ios-arrow-forward"></span>
                 </a>
               </p>
 
-              <p class="card-text">
-                <small class="text-muted">
+              <p className="card-text">
+                <small className="text-muted">
                   Last updated{" "}
                   {new Date(journal.updatedAt).toLocaleDateString("en-GB")}
                 </small>
@@ -61,9 +61,9 @@ export default function JournalList({ journalList, handleDelete }) {
 
   return (
     <div>
-      <div className="row d-flex">
+      <div classNameName="row d-flex">
         {/* middle part */}
-        <div className="col-xl-8 py-5 px-md-5">
+        <div classNameName="col-xl-8 py-5 px-md-5">
           <h1>Journal</h1>
           <button
             onClick={() => {
@@ -73,21 +73,21 @@ export default function JournalList({ journalList, handleDelete }) {
             Display descending order
           </button>
           {/* card display */}
-          <div class="row row-cols-1 g-4">
+          <div className="row row-cols-1 g-4">
             {reverse ? list.reverse() : list}
           </div>
         </div>
 
         {/* right side */}
-        <div className="col-xl-4 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
+        <div classNameName="col-xl-4 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
           {/* search bar */}
-          <div class="sidebar-box pt-md-4">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <span class="icon icon-search"></span>
+          <div className="sidebar-box pt-md-4">
+            <form action="#" className="search-form">
+              <div className="form-group">
+                <span className="icon icon-search"></span>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Type a keyword and hit enter"
                 />
               </div>
@@ -95,22 +95,22 @@ export default function JournalList({ journalList, handleDelete }) {
           </div>
 
           {/* latest post */}
-          <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-            <h3 class="sidebar-heading">Popular Articles</h3>
-            <div class="block-21 mb-4 d-flex">
-              <div class="text">
-                <h3 class="heading">
+          <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
+            <h3 className="sidebar-heading">Popular Articles</h3>
+            <div className="block-21 mb-4 d-flex">
+              <div className="text">
+                <h3 className="heading">
                   Even the all-powerful Pointing has no control
                 </h3>
-                <div class="meta">
+                <div className="meta">
                   <div>
-                    <span class="icon-calendar"></span> June 28, 2019
+                    <span className="icon-calendar"></span> June 28, 2019
                   </div>
                   <div>
-                    <span class="icon-person"></span> Dave Lewis
+                    <span className="icon-person"></span> Dave Lewis
                   </div>
                   <div>
-                    <span class="icon-chat"></span> 19
+                    <span className="icon-chat"></span> 19
                   </div>
                 </div>
               </div>

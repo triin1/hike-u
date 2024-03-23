@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function JournalForm({ addJournal }) {
   const [newJournal, setNewJournal] = useState({
     title: "",
+    image: "",
     date: "",
     difficulty: "",
     content: "",
   });
+
+  const navigate = useNavigate();
 
   function handleAddJournal(event) {
     event.preventDefault();
@@ -20,6 +24,8 @@ export default function JournalForm({ addJournal }) {
       difficulty: "",
       content: "",
     });
+
+    navigate("/journal");
   }
 
   return (
@@ -27,7 +33,7 @@ export default function JournalForm({ addJournal }) {
       <div className="px-4 py-5 my-5 text-center">
         <h1 className="display-5 fw-bold">Hiking Journal</h1>
         <div className="col-lg-6 mx-auto">
-          <p classNameName="lead">Leave your memory</p>
+          <p className="lead">Leave your memory</p>
         </div>
       </div>
 
@@ -56,7 +62,7 @@ export default function JournalForm({ addJournal }) {
                   id="image"
                   value={newJournal.image}
                   onChange={(event) =>
-                    setNewJournal({ ...newJournal, date: event.target.value })
+                    setNewJournal({ ...newJournal, date: event.target.files })
                   }
                   accept="image/*"
                 />
