@@ -9,3 +9,7 @@ export function createJournal(journalData) {
 export function getJournal() {
   return sendRequest(BASE_URL, "GET");
 }
+
+export function deleteJournal(journalId) {
+  return sendRequest(`${BASE_URL}/${journalId}`, "DELETE");
+}

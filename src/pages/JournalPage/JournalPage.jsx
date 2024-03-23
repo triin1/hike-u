@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { deleteJournal } from "../../utilities/journals-api";
 import JournalList from "../../components/JournalList/JournalList";
 import { getJournal } from "../../utilities/journals-api";
 import { Link } from "react-router-dom";
@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 export default function JournalPage() {
   const [journalList, setJournalList] = useState([]);
 
-  // async function handleDelete(noteId) {
-  //   try {
-  //     await deleteNote(noteId);
-  //     //filter out deleted note id
-  //     const updatedNotes = noteList.filter((n) => n._id !== noteId);
-  //     setNoteList(updatedNotes);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  async function handleDelete(journalId) {
+    try {
+      await deleteJournal(journalId);
+      //filter out deleted note id
+      const updatedJournals = journalList.filter((j) => j._id !== journalId);
+      setJournalList(updatedJournals);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -33,13 +33,12 @@ export default function JournalPage() {
     <div className="container-fluid">
       <div className="row">
         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <h1>Journal</h1>
           {/* going to create journal form page !!! */}
           <Link to="/journals/new">
             <button>Create Journal</button>
           </Link>
 
-          <JournalList journalList={journalList} />
+          <JournalList journalList={journalList} handleDelete={handleDelete} />
         </main>
       </div>
     </div>

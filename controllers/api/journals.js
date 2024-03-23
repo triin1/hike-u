@@ -12,8 +12,6 @@ async function create(req, res) {
       user: req.user._id,
     });
 
-    await journal.populate("user").execPopulate();
-
     res.json(journal);
   } catch (err) {
     res.status(400).json(err);
@@ -22,8 +20,17 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    const journals = await Journal.find({});
+    const journals = await Journal.find({}).populate("user");
     res.json(journals);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deleteJournal(req, res) {
+  try {
+    await Journal.deleteOne({ _id: req.params.id, user: req.user._id });
+    res.json(true);
   } catch (err) {
     console.log(err);
   }
@@ -32,5 +39,5 @@ async function index(req, res) {
 module.exports = {
   create,
   index,
-  //     delete: deleteNote,
+  delete: deleteJournal,
 };
