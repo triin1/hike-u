@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function JournalForm({ addJournal }) {
+  const navigate = useNavigate();
   const [newJournal, setNewJournal] = useState({
     title: "",
     image: "",
@@ -10,12 +11,21 @@ export default function JournalForm({ addJournal }) {
     content: "",
   });
 
-  const navigate = useNavigate();
-
   function handleAddJournal(event) {
     event.preventDefault();
     //send to backend
-    addJournal(newJournal);
+    const formData = new FormData();
+    formData.append("title", newJournal.title);
+    formData.append("image", newJournal.image);
+    formData.append("date", newJournal.date);
+    formData.append("difficulty", newJournal.difficulty);
+    formData.append("content", newJournal.content);
+
+    for (const pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+
+    addJournal(formData);
 
     setNewJournal({
       title: "",
@@ -60,9 +70,11 @@ export default function JournalForm({ addJournal }) {
                   type="file"
                   className="form-control"
                   id="image"
-                  value={newJournal.image}
                   onChange={(event) =>
-                    setNewJournal({ ...newJournal, date: event.target.files })
+                    setNewJournal({
+                      ...newJournal,
+                      image: event.target.files[0],
+                    })
                   }
                   accept="image/*"
                 />
@@ -123,8 +135,8 @@ export default function JournalForm({ addJournal }) {
                 </div>
               </div>
             </div>
-            <div class="col-12 text-center">
-              <button type="submit" class="btn btn-dark">
+            <div className="col-12 text-center">
+              <button type="submit" className="btn btn-dark">
                 Add Journal
               </button>
             </div>

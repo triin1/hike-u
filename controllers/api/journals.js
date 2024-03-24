@@ -1,20 +1,34 @@
 const Journal = require("../../models/journal");
+const cloudinary = require("../../utils/cloudinary");
 
 async function create(req, res) {
   try {
+    console.log("create journal", req.body);
+    // Validate input data
+    const { title, date, difficulty, content } = req.body;
+    if (!title || !date || !difficulty || !content) {
+      return res.status(400).json({ message: "Required fields are missing." });
+    }
+    // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ message: "Image file is required." });
+    }
+
+    const result = await cloudinary.uploader.upload(req.file.path);
+
     const journal = await Journal.create({
-      //specify the property in req.body
-      title: req.body.title,
-      // image: req.body.image,
-      date: req.body.date,
-      difficulty: req.body.difficulty,
-      content: req.body.content,
+      title,
+      image: result.secure_url,
+      cloudinary_id: result.public_id,
+      date,
+      difficulty,
+      content,
       user: req.user._id,
     });
 
     res.json(journal);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json(`create journal on database ${err.message}`);
   }
 }
 
