@@ -1,3 +1,20 @@
 .journalSideBar {
   min-height: 100vh;
 }
+
+.no-border {
+  border: none;
+}
+
+.image-container {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .image-container {
+    width: 150px;
+    height: 150px;
+  }
+}

@@ -10,36 +10,9 @@ import EquipmentPage from "../EquipmentPage/EquipmentPage";
 import JournalPage from "../JournalPage/JournalPage";
 import JournalFormPage from "../JournalFormPage/JournalFormPage";
 import Layout from "../../components/Layout/Layout";
+import HikePage from "../HikePage/HikePage";
+import JournalDetailPage from "../JournalDetailPage/JournalDetailPage";
 
-// function App() {
-//   const [user, setUser] = useState(getUser());
-
-//   return (
-//     <div className="App">
-//       <main className="container">
-//         <div className="container-fluid bg-secondary min-vh-100 ">
-//           <div className="row ">
-//             {user ? (
-//               <>
-//                 <div className="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-//                   <NavBar user={user} setUser={setUser} />
-//                 </div>
-//                 <Routes>
-//                   <Route path="/" element={<HomePage />} />
-//                   <Route path="/equipment" element={<EquipmentPage />} />
-//                   <Route path="/journal" element={<JournalPage />} />
-//                   <Route path="/journals/new" element={<JournalFormPage />} />
-//                 </Routes>
-//               </>
-//             ) : (
-//               <AuthPage setUser={setUser} />
-//             )}
-//           </div>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
 function App() {
   const [user, setUser] = useState(getUser());
 
@@ -53,6 +26,8 @@ function App() {
               <Route path="/equipment" element={<EquipmentPage />} />
               <Route path="/journal" element={<JournalPage />} />
               <Route path="/journals/new" element={<JournalFormPage />} />
+              <Route path="/adventures" element={<HikePage />} />
+              <Route path="/journals/:id" element={<JournalDetailPage />} />
             </Routes>
           </>
         </Layout>
