@@ -12,20 +12,23 @@ export default function JournalList({ journalList, handleDelete }) {
   //map throught all journal in the list
   const list = journalList.map((journal) => (
     <div className="col" key={journal._id}>
-      <div className="card mb-3" style={{ maxWidth: "540px" }}>
+      <div className="card mb-3 no-border" style={{ maxWidth: "540px" }}>
         <div className="row g-0">
-          <div className="col-md-4">
-            <img
-              src={journal.image ? journal.image : "./images/test.jpg"}
-              className="img-fluid rounded-start"
-              alt="hikingImage"
-            />
+          <div className="col-md-4 d-flex align-items-center justify-content-center">
+            <div className="image-container">
+              <img
+                src={journal.image ? journal.image : "./images/test.jpg"}
+                className="img-fluid rounded-circle"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                alt="hikingImage"
+              />
+            </div>
           </div>
           <div className="col-md-8">
             {/* delelte journal */}
             <button
               type="submit"
-              className="btn-close btn-close-dark"
+              className="btn-close btn-close-dark position-absolute top-0 end-0 mt-2 me-2"
               aria-label="Close"
               onClick={() => handleDelete(journal._id)}
             ></button>
@@ -51,7 +54,7 @@ export default function JournalList({ journalList, handleDelete }) {
               <p className="card-text">
                 <small className="text-muted">
                   Last updated{" "}
-                  {new Date(journal.updatedAt).toLocaleDateString("en-GB")}
+                  {new Date(journal.updatedAt).toLocaleDateString()}
                 </small>
               </p>
             </div>
@@ -65,8 +68,10 @@ export default function JournalList({ journalList, handleDelete }) {
     <div>
       <div className="row d-flex">
         {/* middle part */}
-        <div className="col-xl-8 py-5 px-md-5">
-          <h1>Journal</h1>
+        <div className="col-xl-9 py-5 px-md-5">
+          <div class="row">
+            <h1 class="display-5 fw-bold">Journal</h1>
+          </div>
           <button
             onClick={() => {
               setReverse(!reverse);
@@ -75,13 +80,13 @@ export default function JournalList({ journalList, handleDelete }) {
             Display descending order
           </button>
           {/* card display */}
-          <div className="row row-cols-1 g-4">
+          <div className="row row-cols-lg-1 row-cols-md-1 row-cols-sm-2 g-4 justify-content-center">
             {reverse ? list.reverse() : list}
           </div>
         </div>
 
         {/* right side */}
-        <div className="col-xl-4 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
+        <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
           {/* search bar */}
           <div className="sidebar-box pt-md-4">
             <form action="#" className="search-form">
