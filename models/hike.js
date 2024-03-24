@@ -25,5 +25,24 @@ const hikeSchema = new Schema({
         type: Number,
         required: true
     },
-    
+    spot: [{
+        type: String
+    }],
+    startDate: {
+        type: Date,
+    },
+    endDate: {
+        type: Date,
+    },
+    equipment: [{
+        type: Schema.Types.ObjectId,
+        ref: "equipment",
+    }],
+    journal: {
+        type: Schema.Types.ObjectId
+    }
+}, {
+    timestamps: true
 })
+
+module.exports = mongoose.model("Hike", hikeSchema);
