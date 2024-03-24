@@ -79,40 +79,40 @@ export default function JournalForm({ addJournal }) {
                   accept="image/*"
                 />
               </div>
+              <div className="row g-3">
+                <div className="col-6">
+                  <label className="form-label">Hiking Date</label>
+                  <input
+                    className="form-control"
+                    id="date"
+                    type="date"
+                    value={newJournal.date}
+                    onChange={(event) =>
+                      setNewJournal({ ...newJournal, date: event.target.value })
+                    }
+                  />
+                </div>
 
-              <div className="col-12">
-                <label className="form-label">Date</label>
-                <input
-                  className="form-control"
-                  id="date"
-                  type="date"
-                  value={newJournal.date}
-                  onChange={(event) =>
-                    setNewJournal({ ...newJournal, date: event.target.value })
-                  }
-                />
+                <div className="col-6">
+                  <label className="form-label">Difficulty</label>
+                  <select
+                    className="form-select form-control"
+                    id="difficulty"
+                    value={newJournal.difficulty}
+                    onChange={(event) =>
+                      setNewJournal({
+                        ...newJournal,
+                        difficulty: event.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Hiking Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                  </select>
+                </div>
               </div>
-
-              <div className="col-12">
-                <label>Difficulty</label>
-                <select
-                  className="form-select form-control"
-                  id="difficulty"
-                  value={newJournal.difficulty}
-                  onChange={(event) =>
-                    setNewJournal({
-                      ...newJournal,
-                      difficulty: event.target.value,
-                    })
-                  }
-                >
-                  <option value="">Select Difficulty</option>
-                  <option value="easy">Easy</option>
-                  <option value="medium">Medium</option>
-                  <option value="hard">Hard</option>
-                </select>
-              </div>
-
               <div className="col-12">
                 <label className="form-label">Content</label>
                 <br />
@@ -137,7 +137,7 @@ export default function JournalForm({ addJournal }) {
             </div>
             <div className="col-12 text-center">
               <button type="submit" className="btn btn-dark">
-                Add Journal
+                Publish
               </button>
             </div>
           </form>
