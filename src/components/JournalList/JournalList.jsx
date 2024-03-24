@@ -141,7 +141,7 @@ export default function JournalList({ journalList, handleDelete }) {
           {/* Achives */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
             <h3 className="sidebar-heading">Archives</h3>
-            <ul class="categories">
+            <ul className="categories">
               {uniqueMonthYear.map((monthYear, index) => (
                 <li key={index} onClick={() => handleDateSelect(index)}>
                   {monthYear.month} {monthYear.year} <span>(nums)</span>
