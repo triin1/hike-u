@@ -3,3 +3,6 @@
     flex-direction: column;
 }
 
+.checkbox-format {
+    padding: 0 10px;
+}

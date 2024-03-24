@@ -33,6 +33,10 @@ function NewEquipmentForm({ addEquipment }) {
         if (checked) {
             setCategory({
                 categories: [...categories, value]});
+        } else {
+            setCategory({
+                categories: categories.filter(event => event !== value)
+            })
         }
     };
 
@@ -54,13 +58,17 @@ function NewEquipmentForm({ addEquipment }) {
                         onChange={(_handleNameChange)}
                         required
                     />
-                    <div>Categories:
-                        <label>Clothing<input type="checkbox" name="categories" value="Clothing" onChange={_handleCategoryChange} /></label>
-                        <label>Footwear<input type="checkbox" name="categories" value="Footwear" onChange={_handleCategoryChange} /></label>
-                        <label>Rainy day<input type="checkbox" name="categories" value="Rainy day" onChange={_handleCategoryChange} /></label>
-                        <label>Hot day<input type="checkbox" name="categories" value="Hot day" onChange={_handleCategoryChange} /></label>
-                        <label>Snow<input type="checkbox" name="categories" value="Snow" onChange={_handleCategoryChange} /></label>
-                        <label>Overnight<input type="checkbox" name="categories" value="Overnight" onChange={_handleCategoryChange} /></label>
+                    <div className="checkbox-format">Categories:
+                        <label className="checkbox-format">Clothing<input type="checkbox" name="categories" value="Clothing" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Footwear<input type="checkbox" name="categories" value="Footwear" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Rainy day<input type="checkbox" name="categories" value="Rainy day" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Hot day<input type="checkbox" name="categories" value="Hot day" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Snow<input type="checkbox" name="categories" value="Snow" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Overnight<input type="checkbox" name="categories" value="Overnight" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Gear<input type="checkbox" name="categories" value="Gear" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Navigation<input type="checkbox" name="categories" value="Navigation" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">First aid<input type="checkbox" name="categories" value="First aid" onChange={_handleCategoryChange} /></label>
+                        <label className="checkbox-format">Tools<input type="checkbox" name="categories" value="Tools" onChange={_handleCategoryChange} /></label>
                     </div>
                     <button type="submit">ADD EQUIPMENT</button>
                 </form>
