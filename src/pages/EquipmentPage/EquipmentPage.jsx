@@ -1,16 +1,22 @@
 import { useState } from "react";
-import NewEquipmentForm from "../../components/NewEquipmentForm/NewEquipmentForm";
+import EquipmentForm from "../../components/EquipmentForm/EquipmentForm";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import "./EquipmentPage.css"
 import EquipmentFilter from "../../components/EquipmentFilter/EquipmentFilter";
+import * as equipmentAPI from "../../utilities/equipment-api";
 
 function EquipmentPage() {
     const [equipmentItems, setEquipmentItems] = useState([]);
     const [showEquipment, setShowEquipment] = useState(false);
     const [filtered, setFiltered] = useState(equipmentItems);
 
-    function addEquipment (equipment) {
-        setEquipmentItems([...equipmentItems, equipment ])
+    async function addEquipment (equipment) {
+        try {
+            const addEquipment = await equipmentAPI.createEquipment(equipment);
+            setEquipmentItems([...equipmentItems, addEquipment ])
+        } catch (err) {
+            console.log("equipment not added", err)
+        }
     };
 
     const _toggleFullEquipmentList = () => {
@@ -25,11 +31,13 @@ function EquipmentPage() {
         setFiltered(filteredEquipment);
       }
 
+    // TODO: add useEffect to load the equipment previously entered
+
     return (
         <div className="equipment-container">
             <h1 className="item-a">Manage your equipment</h1>
             <div className="item-b">
-                <NewEquipmentForm addEquipment={addEquipment}/>
+                <EquipmentForm addEquipment={addEquipment}/>
             </div>
             <EquipmentFilter _handleFilter={_handleFilter} filtered={filtered}/>
             <div className="item-c">
