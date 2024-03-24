@@ -28,7 +28,16 @@ export default function JournalList({ journalList, handleDelete }) {
 
   function handleDateSelect(index) {
     const selectedMonthYear = uniqueMonthYear[index];
-    setSelectedDate(selectedMonthYear);
+    if (
+      selectedDate &&
+      selectedDate.month === selectedMonthYear.month &&
+      selectedDate.year === selectedMonthYear.year
+    ) {
+      // Clear the selected date to revert back to original list
+      setSelectedDate(null);
+    } else {
+      setSelectedDate(selectedMonthYear);
+    }
   }
 
   const filteredJournalList = selectedDate
@@ -141,9 +150,20 @@ export default function JournalList({ journalList, handleDelete }) {
           {/* Achives */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
             <h3 className="sidebar-heading">Archives</h3>
-            <ul className="categories">
+            <ul className="list-group archives">
               {uniqueMonthYear.map((monthYear, index) => (
-                <li key={index} onClick={() => handleDateSelect(index)}>
+                <li
+                  // style={{ border: "none", borderBottom: "1px solid #dee2e6" }}
+                  key={index}
+                  onClick={() => handleDateSelect(index)}
+                  className={
+                    selectedDate &&
+                    selectedDate.month === monthYear.month &&
+                    selectedDate.year === monthYear.year
+                      ? "list-group-item active"
+                      : "list-group-item"
+                  }
+                >
                   {monthYear.month} {monthYear.year} <span>(nums)</span>
                 </li>
               ))}

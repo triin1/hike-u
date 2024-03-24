@@ -1,91 +1,173 @@
 import { useState } from "react";
-import "./EquipmentForm.css"
+import "./EquipmentForm.css";
 
 function EquipmentForm({ addEquipment }) {
-    const [newEquipment, setNewEquipment] = useState({
-        name: "",
-        quantity: 1
-    });
-    const [category, setCategory] = useState({
-        categories: []
-    });
+  const [newEquipment, setNewEquipment] = useState({
+    name: "",
+    quantity: 1,
+  });
+  const [category, setCategory] = useState({
+    categories: [],
+  });
 
-    async function _handleAddNewEquipment(event) {
-        event.preventDefault();
-        try {
-            const formData = new FormData();
-                formData.append("name", newEquipment.name);
-                formData.append("quantity", newEquipment.quantity);
-                formData.append("categories", category.categories);
-            await addEquipment(formData); 
-            for (const pair of formData.entries()) {
-                console.log(pair[0], pair[1]);
-            }
-        } catch(err) {
-            console.log(err)
-        }
-        // addEquipment({newEquipment, ...category});
-        setNewEquipment({
-            name: "",
-            quantity: 1,
-        });
-    };
-
-    function _handleNameChange(event) {
-        const updatedName = {
-            ...newEquipment,
-            [event.target.name]: event.target.value,
-        };
-        setNewEquipment(updatedName);
+  async function _handleAddNewEquipment(event) {
+    event.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("name", newEquipment.name);
+      formData.append("quantity", newEquipment.quantity);
+      formData.append("categories", category.categories);
+      await addEquipment(formData);
+      for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+    } catch (err) {
+      console.log(err);
     }
+    // addEquipment({newEquipment, ...category});
+    setNewEquipment({
+      name: "",
+      quantity: 1,
+    });
+  }
 
-    function _handleCategoryChange(event) {
-        const { value, checked } = event.target;
-        const { categories } = category;
-        if (checked) {
-            setCategory({
-                categories: [...categories, value]});
-        } else {
-            setCategory({
-                categories: categories.filter(event => event !== value)
-            })
-        }
+  function _handleNameChange(event) {
+    const updatedName = {
+      ...newEquipment,
+      [event.target.name]: event.target.value,
     };
+    setNewEquipment(updatedName);
+  }
 
-    return (
-        <div className="form-container">
-            <h4>Add new items</h4>
-                <form onSubmit={_handleAddNewEquipment} className="form-container">
-                    <label>Add equipment</label>
-                    <input
-                        name="name"
-                        value={newEquipment.name}
-                        onChange={_handleNameChange}
-                        required
-                    />
-                    <label>Quantity</label>
-                    <input
-                        name="quantity"
-                        value={newEquipment.quantity}
-                        onChange={(_handleNameChange)}
-                        required
-                    />
-                    <div className="checkbox-format">Categories:
-                        <label className="checkbox-format">Clothing<input type="checkbox" name="categories" value="Clothing" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Footwear<input type="checkbox" name="categories" value="Footwear" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Rainy day<input type="checkbox" name="categories" value="Rainy day" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Hot day<input type="checkbox" name="categories" value="Hot day" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Snow<input type="checkbox" name="categories" value="Snow" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Overnight<input type="checkbox" name="categories" value="Overnight" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Gear<input type="checkbox" name="categories" value="Gear" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Navigation<input type="checkbox" name="categories" value="Navigation" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">First aid<input type="checkbox" name="categories" value="First aid" onChange={_handleCategoryChange} /></label>
-                        <label className="checkbox-format">Tools<input type="checkbox" name="categories" value="Tools" onChange={_handleCategoryChange} /></label>
-                    </div>
-                    <button type="submit">ADD EQUIPMENT</button>
-                </form>
-            </div>
-    );
-};
+  function _handleCategoryChange(event) {
+    const { value, checked } = event.target;
+    const { categories } = category;
+    if (checked) {
+      setCategory({
+        categories: [...categories, value],
+      });
+    } else {
+      setCategory({
+        categories: categories.filter((event) => event !== value),
+      });
+    }
+  }
+
+  return (
+    <div className="form-container">
+      <h4>Add new items</h4>
+      <form onSubmit={_handleAddNewEquipment} className="form-container">
+        <label>Add equipment</label>
+        <input
+          name="name"
+          value={newEquipment.name}
+          onChange={_handleNameChange}
+          required
+        />
+        <label>Quantity</label>
+        <input
+          name="quantity"
+          value={newEquipment.quantity}
+          onChange={_handleNameChange}
+          required
+        />
+        <div className="checkbox-format">
+          Categories:
+          <label className="checkbox-format">
+            Clothing
+            <input
+              type="checkbox"
+              name="categories"
+              value="Clothing"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Footwear
+            <input
+              type="checkbox"
+              name="categories"
+              value="Footwear"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Rainy day
+            <input
+              type="checkbox"
+              name="categories"
+              value="Rainy day"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Hot day
+            <input
+              type="checkbox"
+              name="categories"
+              value="Hot day"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Snow
+            <input
+              type="checkbox"
+              name="categories"
+              value="Snow"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Overnight
+            <input
+              type="checkbox"
+              name="categories"
+              value="Overnight"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Gear
+            <input
+              type="checkbox"
+              name="categories"
+              value="Gear"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Navigation
+            <input
+              type="checkbox"
+              name="categories"
+              value="Navigation"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            First aid
+            <input
+              type="checkbox"
+              name="categories"
+              value="First aid"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+          <label className="checkbox-format">
+            Tools
+            <input
+              type="checkbox"
+              name="categories"
+              value="Tools"
+              onChange={_handleCategoryChange}
+            />
+          </label>
+        </div>
+        <button type="submit">ADD EQUIPMENT</button>
+      </form>
+    </div>
+  );
+}
 
 export default EquipmentForm;
