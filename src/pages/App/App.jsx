@@ -10,6 +10,7 @@ import EquipmentPage from "../EquipmentPage/EquipmentPage";
 import JournalPage from "../JournalPage/JournalPage";
 import JournalFormPage from "../JournalFormPage/JournalFormPage";
 import Layout from "../../components/Layout/Layout";
+import HikePage from "../HikePage/HikePage";
 
 // function App() {
 //   const [user, setUser] = useState(getUser());
@@ -53,6 +54,7 @@ function App() {
               <Route path="/equipment" element={<EquipmentPage />} />
               <Route path="/journal" element={<JournalPage />} />
               <Route path="/journals/new" element={<JournalFormPage />} />
+              <Route path="/adventures" element={<HikePage />} />
             </Routes>
           </>
         </Layout>
