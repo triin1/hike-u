@@ -101,27 +101,16 @@ export default function JournalList({ journalList, handleDelete }) {
             </form>
           </div>
 
-          {/* latest post */}
+          {/* Achives */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
-            <h3 className="sidebar-heading">Popular Articles</h3>
-            <div className="block-21 mb-4 d-flex">
-              <div className="text">
-                <h3 className="heading">
-                  Even the all-powerful Pointing has no control
-                </h3>
-                <div className="meta">
-                  <div>
-                    <span className="icon-calendar"></span> June 28, 2019
-                  </div>
-                  <div>
-                    <span className="icon-person"></span> Dave Lewis
-                  </div>
-                  <div>
-                    <span className="icon-chat"></span> 19
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h3 className="sidebar-heading">Archives</h3>
+            <ul class="categories">
+              <li>
+                <a href="#">
+                  Decob14 2018 <span>(10)</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
