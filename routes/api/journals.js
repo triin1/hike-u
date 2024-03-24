@@ -14,4 +14,7 @@ router.get("/", journalsCtrl.index);
 // DELETE /api/journals/:id
 router.delete("/:id", journalsCtrl.delete);
 
+// GET /api/journals/:id
+router.get("/:id", journalsCtrl.show);
+
 module.exports = router;

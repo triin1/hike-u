@@ -10,9 +10,6 @@ function EquipmentList( {equipment} ) {
                     <p key={index} className="cat-item">{cat}</p>
                 ))}
             </div>
-            
-            
-            {/* <p className="equip-categories">{equipment.categories}</p> */}
         </div>
     )
 };

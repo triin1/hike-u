@@ -50,8 +50,18 @@ async function deleteJournal(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const journal = await Journal.findById(req.params.id).populate("user");
+    res.json(journal);
+  } catch (err) {
+    console.log("show journal detail", err);
+  }
+}
+
 module.exports = {
   create,
   index,
   delete: deleteJournal,
+  show,
 };

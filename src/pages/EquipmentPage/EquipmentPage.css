@@ -11,6 +11,10 @@
     grid-area: side
 }
 
+.item-d {
+    grid-area: side-bottom;
+}
+
 .equipment-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -18,4 +22,5 @@
     grid-template-areas:
         "header header"
         "main    side"
+        ".     side-bottom"
 }

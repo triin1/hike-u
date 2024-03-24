@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./JournalList.css";
+import { Link } from "react-router-dom";
 
 export default function JournalList({ journalList, handleDelete }) {
   const [reverse, setReverse] = useState(false);
@@ -8,6 +9,7 @@ export default function JournalList({ journalList, handleDelete }) {
     <p>No Journal Yet!</p>;
   }
 
+  //map throught all journal in the list
   const list = journalList.map((journal) => (
     <div className="col" key={journal._id}>
       <div className="card mb-3" style={{ maxWidth: "540px" }}>
@@ -16,7 +18,7 @@ export default function JournalList({ journalList, handleDelete }) {
             <img
               src={journal.image ? journal.image : "./images/test.jpg"}
               className="img-fluid rounded-start"
-              alt="..."
+              alt="hikingImage"
             />
           </div>
           <div className="col-md-8">
@@ -41,9 +43,9 @@ export default function JournalList({ journalList, handleDelete }) {
               <p className="card-text">{journal.content}</p>
 
               <p>
-                <a href="#" className="btn-custom">
-                  Read More <span className="ion-ios-arrow-forward"></span>
-                </a>
+                <Link to={`/journals/${journal._id}`} className="btn-custom">
+                  Read More &gt;&gt;
+                </Link>
               </p>
 
               <p className="card-text">
