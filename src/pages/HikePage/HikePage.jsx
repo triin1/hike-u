@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HikeStops from "../../components/HikeStops/HikeStops";
 import HikeDetails from "../../components/HikeDetails/HikeDetails";
+import HikeMap from "../../components/HikeMap/HikeMap";
 
 function HikePage() {
 
@@ -10,7 +11,7 @@ function HikePage() {
 
     return (
         <div>
-            {/* HikeMap API */}
+        <HikeMap/>
         <HikeStops />
         <HikeDetails />
         </div>
