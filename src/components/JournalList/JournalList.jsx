@@ -14,7 +14,7 @@ export default function JournalList({ journalList, handleDelete }) {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="./images/test.jpg"
+              src={journal.image ? journal.image : "./images/test.jpg"}
               className="img-fluid rounded-start"
               alt="..."
             />
@@ -61,9 +61,9 @@ export default function JournalList({ journalList, handleDelete }) {
 
   return (
     <div>
-      <div classNameName="row d-flex">
+      <div className="row d-flex">
         {/* middle part */}
-        <div classNameName="col-xl-8 py-5 px-md-5">
+        <div className="col-xl-8 py-5 px-md-5">
           <h1>Journal</h1>
           <button
             onClick={() => {
@@ -79,7 +79,7 @@ export default function JournalList({ journalList, handleDelete }) {
         </div>
 
         {/* right side */}
-        <div classNameName="col-xl-4 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
+        <div className="col-xl-4 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
           {/* search bar */}
           <div className="sidebar-box pt-md-4">
             <form action="#" className="search-form">

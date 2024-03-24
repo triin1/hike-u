@@ -7,7 +7,7 @@ export default function JournalFormPage() {
       //send to Backend
       await createJournal(journal);
     } catch (err) {
-      console.log(err);
+      console.log("create jouranl", err);
     }
   }
 
