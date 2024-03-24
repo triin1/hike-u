@@ -4,13 +4,50 @@ import { Link } from "react-router-dom";
 
 export default function JournalList({ journalList, handleDelete }) {
   const [reverse, setReverse] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   if (journalList.length === 0) {
     <p>No Journal Yet!</p>;
   }
 
+  // category setting
+  const monthYear = journalList.map((j) => {
+    const date = new Date(j.date);
+    const year = date.getFullYear();
+    const month = date.toLocaleString("default", { month: "long" });
+    return { month, year };
+  });
+  const uniqueMonthYear = monthYear.filter((item, index, array) => {
+    // Find the index of the first occurrence of the current item
+    const firstIndex = array.findIndex(
+      (obj) => obj.month === item.month && obj.year === item.year
+    );
+    // Return whether the current index is equal to the first index
+    return index === firstIndex;
+  });
+
+  function handleDateSelect(index) {
+    const selectedMonthYear = uniqueMonthYear[index];
+    setSelectedDate(selectedMonthYear);
+  }
+
+  const filteredJournalList = selectedDate
+    ? journalList.filter((journal) => {
+        const journalDate = new Date(journal.date);
+        const journalMonth = journalDate.toLocaleString("default", {
+          month: "long",
+        });
+        const journalYear = journalDate.getFullYear();
+
+        return (
+          journalMonth === selectedDate.month &&
+          journalYear === selectedDate.year
+        );
+      })
+    : journalList;
+
   //map throught all journal in the list
-  const list = journalList.map((journal) => (
+  const list = filteredJournalList.map((journal) => (
     <div className="col" key={journal._id}>
       <div className="card mb-3 no-border" style={{ maxWidth: "540px" }}>
         <div className="row g-0">
@@ -104,12 +141,12 @@ export default function JournalList({ journalList, handleDelete }) {
           {/* Achives */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
             <h3 className="sidebar-heading">Archives</h3>
-            <ul class="categories">
-              <li>
-                <a href="#">
-                  Decob14 2018 <span>(10)</span>
-                </a>
-              </li>
+            <ul className="categories">
+              {uniqueMonthYear.map((monthYear, index) => (
+                <li key={index} onClick={() => handleDateSelect(index)}>
+                  {monthYear.month} {monthYear.year} <span>(nums)</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
