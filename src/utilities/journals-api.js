@@ -12,3 +12,7 @@ export function getJournal() {
 export function deleteJournal(journalId) {
   return sendRequest(`${BASE_URL}/${journalId}`, "DELETE");
 }
+
+export function getOneJournal(journalId) {
+  return sendRequest(`${BASE_URL}/${journalId}`, "GET");
+}
