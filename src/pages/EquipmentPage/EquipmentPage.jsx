@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EquipmentForm from "../../components/EquipmentForm/EquipmentForm";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import "./EquipmentPage.css"
@@ -31,7 +31,19 @@ function EquipmentPage() {
         setFiltered(filteredEquipment);
       }
 
-    // TODO: add useEffect to load the equipment previously entered
+    async function deleteEquipment(id) {
+        await equipmentAPI.deleteEquipment(id);
+        const updatedEquipment = equipmentItems.filter((item) => item._id !== id);
+        setEquipmentItems(updatedEquipment);
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const allEquipment = await equipmentAPI.getAll();
+            setEquipmentItems(allEquipment)
+        }
+        fetchData();
+    }, []);
 
     return (
         <div className="equipment-container">
@@ -41,7 +53,7 @@ function EquipmentPage() {
             </div>
             <EquipmentFilter _handleFilter={_handleFilter} filtered={filtered}/>
             <div className="item-c">
-                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={equipmentItems} />}
+                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>}
             </div>
         </div>
     )

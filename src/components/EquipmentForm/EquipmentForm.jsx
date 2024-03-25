@@ -12,23 +12,18 @@ function EquipmentForm({ addEquipment }) {
 
   async function _handleAddNewEquipment(event) {
     event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("name", newEquipment.name);
-      formData.append("quantity", newEquipment.quantity);
-      formData.append("categories", category.categories);
-      await addEquipment(formData);
-      for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
-    } catch (err) {
-      console.log(err);
+    const equipment = {
+      ...newEquipment,
+      ...category
     }
-    // addEquipment({newEquipment, ...category});
+    await addEquipment(equipment);
     setNewEquipment({
       name: "",
       quantity: 1,
     });
+    setCategory ({
+      categories: [],
+    })
   }
 
   function _handleNameChange(event) {
