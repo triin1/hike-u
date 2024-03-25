@@ -113,7 +113,7 @@ function HikeMap() {
         if (map.current) return; // initialize map only once
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v12',
+            style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
             zoom: zoom
         });
@@ -123,7 +123,17 @@ function HikeMap() {
             unit: 'metric',
             profile: 'mapbox/driving',
         });
+
+        const currentPosition = new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true,
+            showUserHeading: true
+        })
+
         map.current.addControl(directions, 'top-left');
+        map.current.addControl(currentPosition, 'bottom-right')
 
     }, []);
 
