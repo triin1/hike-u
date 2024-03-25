@@ -1,4 +1,4 @@
-import HikeStops from "../HikeStops/HikeStops";
+import HikeStops from "../HikeStopsList/HikeStopsList";
 
 export default function HikeDetails() {
 
