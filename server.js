@@ -30,6 +30,7 @@ const port = process.env.PORT || 3001;
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/journals", require("./routes/api/journals"));
 app.use("/api/equipment", require("./routes/api/equipment"));
+app.use("/api/hikes/spots", require("./routes/api/spots"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
