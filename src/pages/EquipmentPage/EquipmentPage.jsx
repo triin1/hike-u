@@ -31,6 +31,12 @@ function EquipmentPage() {
         setFiltered(filteredEquipment);
       }
 
+    async function deleteEquipment(id) {
+        await equipmentAPI.deleteEquipment(id);
+        const updatedEquipment = equipmentItems.filter((item) => item._id !== id);
+        setEquipmentItems(updatedEquipment);
+    }
+
     useEffect(() => {
         async function fetchData() {
             const allEquipment = await equipmentAPI.getAll();
@@ -47,7 +53,7 @@ function EquipmentPage() {
             </div>
             <EquipmentFilter _handleFilter={_handleFilter} filtered={filtered}/>
             <div className="item-c">
-                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={equipmentItems} />}
+                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>}
             </div>
         </div>
     )
