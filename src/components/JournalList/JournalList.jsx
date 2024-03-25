@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./JournalList.css";
-import { Link } from "react-router-dom";
 import Achive from "../Achive/Achive";
 import JournalSearch from "../JournalSearch/JournalSearch";
 import JournalListItem from "../JournalListItem/JournalListItem";
