@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./JournalList.css";
 import { Link } from "react-router-dom";
+import Achive from "../Achive/Achive";
+import JournalSearch from "../JournalSearch/JournalSearch";
 
 export default function JournalList({ journalList, handleDelete }) {
   const [reverse, setReverse] = useState(false);
@@ -55,7 +57,7 @@ export default function JournalList({ journalList, handleDelete }) {
       })
     : journalList;
 
-  //map throught all journal in the list
+  //map throught all journal in the list (include "delete" button)
   const list = filteredJournalList.map((journal) => (
     <div className="col" key={journal._id}>
       <div className="card mb-3 no-border" style={{ maxWidth: "540px" }}>
@@ -134,40 +136,15 @@ export default function JournalList({ journalList, handleDelete }) {
         {/* right side */}
         <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
           {/* search bar */}
-          <div className="sidebar-box pt-md-4">
-            <form action="#" className="search-form">
-              <div className="form-group">
-                <span className="icon icon-search"></span>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Type a keyword and hit enter"
-                />
-              </div>
-            </form>
-          </div>
+          <JournalSearch />
 
           {/* Achives */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
-            <h3 className="sidebar-heading">Archives</h3>
-            <ul className="list-group archives">
-              {uniqueMonthYear.map((monthYear, index) => (
-                <li
-                  // style={{ border: "none", borderBottom: "1px solid #dee2e6" }}
-                  key={index}
-                  onClick={() => handleDateSelect(index)}
-                  className={
-                    selectedDate &&
-                    selectedDate.month === monthYear.month &&
-                    selectedDate.year === monthYear.year
-                      ? "list-group-item active"
-                      : "list-group-item"
-                  }
-                >
-                  {monthYear.month} {monthYear.year} <span>(nums)</span>
-                </li>
-              ))}
-            </ul>
+            <Achive
+              uniqueMonthYear={uniqueMonthYear}
+              selectedDate={selectedDate}
+              handleDateSelect={handleDateSelect}
+            />
           </div>
         </div>
       </div>
