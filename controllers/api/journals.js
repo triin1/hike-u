@@ -35,7 +35,20 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    const journals = await Journal.find({}).populate("user");
+    let journals;
+    const searchTerm = req.query.searchTerm;
+
+    if (searchTerm) {
+      journals = await Journal.find({
+        $or: [
+          { title: { $regex: searchTerm, $options: "i" } },
+          { content: { $regex: searchTerm, $options: "i" } },
+        ],
+      }).populate("user");
+    } else {
+      journals = await Journal.find({}).populate("user");
+    }
+
     res.json(journals);
   } catch (err) {
     console.log(err);

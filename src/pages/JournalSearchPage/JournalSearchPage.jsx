@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getJournal } from "../../utilities/journals-api";
 
 export default function JournalSearchPage() {
@@ -13,7 +13,7 @@ export default function JournalSearchPage() {
       try {
         async function fetchSearchedResult() {
           const journals = await getJournal();
-          console.log("search results:", journals);
+
           setJournalList(journals);
         }
 
@@ -25,5 +25,11 @@ export default function JournalSearchPage() {
     }
   }, [location.search]);
 
-  return <div>Search</div>;
+  return (
+    <>
+      {journalList.map((journal, index) => (
+        <p key={index}>{journal.title}</p>
+      ))}
+    </>
+  );
 }

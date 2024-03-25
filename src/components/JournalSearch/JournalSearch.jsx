@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getJournal } from "../../utilities/journals-api";
 
 export default function JournalSearch() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [journalList, setJournalList] = useState([]);
+
   const location = useLocation();
   const navigate = useNavigate();
 
