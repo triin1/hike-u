@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EquipmentForm from "../../components/EquipmentForm/EquipmentForm";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import "./EquipmentPage.css"
@@ -8,7 +8,7 @@ import * as equipmentAPI from "../../utilities/equipment-api";
 function EquipmentPage() {
     const [equipmentItems, setEquipmentItems] = useState([]);
     const [showEquipment, setShowEquipment] = useState(false);
-    const [filtered, setFiltered] = useState(equipmentItems);
+    const [filtered, setFiltered] = useState('');
 
     async function addEquipment (equipment) {
         try {
@@ -24,14 +24,31 @@ function EquipmentPage() {
     }
 
     function _handleFilter(event) {
-        if (event.target.value === "All") {
-            return setFiltered(equipmentItems)
-        }
-        const filteredEquipment = equipmentItems.filter((item, index) => item.categories[index] === event.target.value);
-        setFiltered(filteredEquipment);
+        // if (event.target.value === "All") {
+        //     return setEquipmentItems(equipmentItems)
+        // }
+        // const filteredEquipment = equipmentItems.filter((item, index) => item.categories[index] === event.target.value);
+        // // console.log( equipmentItems.filter((item, index) => item.categories[index] === event.target.value))
+        // // const mapping = equipmentItems.map(item => item.categories);
+        // // console.log(mapping.filter((item, index) => item[index]))
+        // // const filteredEquipment = mapping.filter(item => item === event.target.value)
+        // console.log(filtered)
+        // setEquipmentItems(filteredEquipment);
       }
 
-    // TODO: add useEffect to load the equipment previously entered
+    async function deleteEquipment(id) {
+        await equipmentAPI.deleteEquipment(id);
+        const updatedEquipment = equipmentItems.filter((item) => item._id !== id);
+        setEquipmentItems(updatedEquipment);
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            const allEquipment = await equipmentAPI.getAll();
+            setEquipmentItems(allEquipment)
+        }
+        fetchData();
+    }, []);
 
     return (
         <div className="equipment-container">
@@ -39,9 +56,10 @@ function EquipmentPage() {
             <div className="item-b">
                 <EquipmentForm addEquipment={addEquipment}/>
             </div>
-            <EquipmentFilter _handleFilter={_handleFilter} filtered={filtered}/>
+            <EquipmentFilter _handleFilter={_handleFilter} setFiltered={setFiltered} equipmentItems={ equipmentItems } />
             <div className="item-c">
-                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={equipmentItems} />}
+                {/* <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>} */}
+                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} />
             </div>
         </div>
     )

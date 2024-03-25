@@ -1,22 +1,24 @@
-function EquipmentFilter( { _handleFilter }, { filtered }) {
+import EquipmentList from "../EquipmentItem/EquipmentItem";
+
+function EquipmentFilter( { _handleFilter, setFiltered, equipmentItems }) {
     // TODO: need to build a way to display the filtered results
     
-    // const categoryItems = [...new Set(equipmentItems.map((cat) => equipment.categories))]
+    // Create an array of categories that the user has used
+    let categoryItems = equipmentItems.map(e => e.categories);
+    let categoryArray = categoryItems.flat();
+    let listOfCategories = new Set(categoryArray);
+    let listOfCategoriesArray = Array.from(listOfCategories);
+
+    //setFiltered(listOfCategoriesArray);
     
     return (
         <label>Filter:
-            <select onChange={_handleFilter}>
-                <option value="All">All</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Footwear">Footwear</option>
-                <option value="Rainy day">Rainy day</option>
-                <option value="Hot day">Hot day</option>
-                <option value="Snow">Snow</option>
-                <option value="Overnight">Overnight</option>
-                <option value="Gear">Gear</option>
-                <option value="Navigation">Navigation</option>
-                <option value="First aid">First aid</option>
-                <option value="Tools">Tools</option>
+            <select onChange={(e) => setFiltered(e.target.value)}>
+                <option></option>
+                <option>All</option>
+                {listOfCategoriesArray.map((cat, index) =>
+                <option key={index}>{cat}</option>
+            )}
             </select>
         </label>
     )

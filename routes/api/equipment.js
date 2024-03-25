@@ -6,5 +6,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 //All paths start with '/api/equipment'
 
 router.post('/', ensureLoggedIn, equipmentController.create);
+router.get('/', ensureLoggedIn, equipmentController.index);
+router.delete('/:id', ensureLoggedIn, equipmentController.delete)
 
 module.exports = router;
