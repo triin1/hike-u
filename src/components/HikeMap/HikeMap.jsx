@@ -13,6 +13,7 @@ function HikeMap() {
     const directions = useRef(null);
     const currentPosition = useRef(null);
     const originLocation = useRef(null);
+    const routeDistance = useRef(null);
     const destinationLocation = useRef(null);
     const [initialLongtitude, setInitialLongtitude] = useState(151.216454);
     const [initialLatitude, setInitialLatitude] = useState(-33.854816);
@@ -48,15 +49,15 @@ function HikeMap() {
 
         map.current.addControl(directions.current, 'top-left');
         map.current.addControl(currentPosition.current, 'bottom-right')
-
         directions.current.on('route', handleRouteUpdate);
 
     }, []);
 
     const handleRouteUpdate = (evt) => {
+        console.log(evt.route[0])
+        routeDistance.current = evt.route[0].distance
         originLocation.current = directions.current.getOrigin().geometry.coordinates;
         destinationLocation.current = directions.current.getDestination().geometry.coordinates
-        console.log(originLocation.current, destinationLocation.current)
     };
 
     return (
