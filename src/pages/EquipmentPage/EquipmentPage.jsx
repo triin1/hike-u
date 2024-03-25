@@ -8,7 +8,7 @@ import * as equipmentAPI from "../../utilities/equipment-api";
 function EquipmentPage() {
     const [equipmentItems, setEquipmentItems] = useState([]);
     const [showEquipment, setShowEquipment] = useState(false);
-    const [filtered, setFiltered] = useState(equipmentItems);
+    const [filtered, setFiltered] = useState('');
 
     async function addEquipment (equipment) {
         try {
@@ -24,11 +24,16 @@ function EquipmentPage() {
     }
 
     function _handleFilter(event) {
-        if (event.target.value === "All") {
-            return setFiltered(equipmentItems)
-        }
-        const filteredEquipment = equipmentItems.filter((item, index) => item.categories[index] === event.target.value);
-        setFiltered(filteredEquipment);
+        // if (event.target.value === "All") {
+        //     return setEquipmentItems(equipmentItems)
+        // }
+        // const filteredEquipment = equipmentItems.filter((item, index) => item.categories[index] === event.target.value);
+        // // console.log( equipmentItems.filter((item, index) => item.categories[index] === event.target.value))
+        // // const mapping = equipmentItems.map(item => item.categories);
+        // // console.log(mapping.filter((item, index) => item[index]))
+        // // const filteredEquipment = mapping.filter(item => item === event.target.value)
+        // console.log(filtered)
+        // setEquipmentItems(filteredEquipment);
       }
 
     async function deleteEquipment(id) {
@@ -51,9 +56,10 @@ function EquipmentPage() {
             <div className="item-b">
                 <EquipmentForm addEquipment={addEquipment}/>
             </div>
-            <EquipmentFilter _handleFilter={_handleFilter} filtered={filtered}/>
+            <EquipmentFilter _handleFilter={_handleFilter} setFiltered={setFiltered} equipmentItems={ equipmentItems } />
             <div className="item-c">
-                <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>}
+                {/* <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>} */}
+                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} />
             </div>
         </div>
     )
