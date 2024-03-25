@@ -23,8 +23,17 @@ async function index(req, res) {
     }
 };
 
+async function deleteEquipment(req, res) {
+    try {
+        await Equipment.deleteOne({_id: req.params.id, user: req.user._id});
+        res.json(true)
+    } catch(err) {
+        res.status(400).json(err);
+    }
+};
 
 module.exports = {
     create,
-    index
+    index,
+    delete: deleteEquipment
 }
