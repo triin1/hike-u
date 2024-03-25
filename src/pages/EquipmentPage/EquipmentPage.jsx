@@ -7,7 +7,6 @@ import * as equipmentAPI from "../../utilities/equipment-api";
 
 function EquipmentPage() {
     const [equipmentItems, setEquipmentItems] = useState([]);
-    const [showEquipment, setShowEquipment] = useState(false);
     const [filtered, setFiltered] = useState('');
 
     async function addEquipment (equipment) {
@@ -19,27 +18,20 @@ function EquipmentPage() {
         }
     };
 
-    const _toggleFullEquipmentList = () => {
-        setShowEquipment(!showEquipment)
-    }
-
-    function _handleFilter(event) {
-        // if (event.target.value === "All") {
-        //     return setEquipmentItems(equipmentItems)
-        // }
-        // const filteredEquipment = equipmentItems.filter((item, index) => item.categories[index] === event.target.value);
-        // // console.log( equipmentItems.filter((item, index) => item.categories[index] === event.target.value))
-        // // const mapping = equipmentItems.map(item => item.categories);
-        // // console.log(mapping.filter((item, index) => item[index]))
-        // // const filteredEquipment = mapping.filter(item => item === event.target.value)
-        // console.log(filtered)
-        // setEquipmentItems(filteredEquipment);
-      }
-
     async function deleteEquipment(id) {
         await equipmentAPI.deleteEquipment(id);
         const updatedEquipment = equipmentItems.filter((item) => item._id !== id);
         setEquipmentItems(updatedEquipment);
+    }
+
+    // Change the quantity of the equipment you have
+    async function handleQuantityChange(itemId, newQuantity) {
+        try {
+            const updatedEquipment = await equipmentAPI.setItemQuantity(itemId, newQuantity);
+            setEquipmentItems(updatedEquipment)
+        } catch(err) {
+            console.log("equipment not updated", err)
+        }
     }
 
     useEffect(() => {
@@ -56,10 +48,10 @@ function EquipmentPage() {
             <div className="item-b">
                 <EquipmentForm addEquipment={addEquipment}/>
             </div>
-            <EquipmentFilter _handleFilter={_handleFilter} setFiltered={setFiltered} equipmentItems={ equipmentItems } />
             <div className="item-c">
-                {/* <button onClick={_toggleFullEquipmentList} >{showEquipment ? "Hide full equipment list" : "Show full equipment list"}</button> {showEquipment && <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment }/>} */}
-                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} />
+                <h4>List of your equipment</h4>
+                <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
+                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} handleQuantityChange={handleQuantityChange}/>
             </div>
         </div>
     )

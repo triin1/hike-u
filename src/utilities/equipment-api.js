@@ -12,3 +12,8 @@ export function getAll() {
   export async function deleteEquipment(id) {
     return sendRequest(`${ BASE_URL }/${ id }`, 'DELETE');
   }
+
+  // changing the quantity of an item
+  export function setItemQuantity(itemId, newQuantity) {
+    return sendRequest(BASE_URL, 'PUT', { itemId, newQuantity });
+  };
