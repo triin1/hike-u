@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HikeStops from "../../components/HikeStops/HikeStops";
+import HikeStopsList from "../../components/HikeStopsList/HikeStopsList";
 import HikeDetails from "../../components/HikeDetails/HikeDetails";
 import HikeMap from "../../components/HikeMap/HikeMap";
 
@@ -12,7 +12,7 @@ function HikePage() {
     return (
         <div>
         <HikeMap/>
-        <HikeStops />
+        <HikeStopsList />
         <HikeDetails />
         </div>
     )
