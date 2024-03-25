@@ -16,3 +16,7 @@ export function deleteJournal(journalId) {
 export function getOneJournal(journalId) {
   return sendRequest(`${BASE_URL}/${journalId}`, "GET");
 }
+
+export function updateJournal(updateJournal) {
+  return sendRequest(`${BASE_URL}/${updateJournal._id}`, "PUT", updateJournal);
+}

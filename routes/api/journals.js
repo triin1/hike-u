@@ -17,4 +17,7 @@ router.delete("/:id", journalsCtrl.delete);
 // GET /api/journals/:id
 router.get("/:id", journalsCtrl.show);
 
+// PUT /api/journals/:id/edit
+router.put("/:id", journalsCtrl.update);
+
 module.exports = router;

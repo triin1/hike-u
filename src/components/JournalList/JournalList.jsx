@@ -115,8 +115,8 @@ export default function JournalList({ journalList, handleDelete }) {
       <div className="row d-flex">
         {/* middle part */}
         <div className="col-xl-9 py-5 px-md-5">
-          <div class="row">
-            <h1 class="display-5 fw-bold">Journal</h1>
+          <div className="row">
+            <h1 className="display-5 fw-bold">Journal</h1>
           </div>
           <button
             onClick={() => {
