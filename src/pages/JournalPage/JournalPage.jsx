@@ -39,6 +39,10 @@ export default function JournalPage() {
           </Link>
 
           <JournalList journalList={journalList} handleDelete={handleDelete} />
+
+          {/* journalSearchComponent */}
+
+          {/* AchiveComponent */}
         </main>
       </div>
     </div>
