@@ -8,6 +8,7 @@ export default function HikeStopsForm({ addNewStop }) {
     function _handleNewStop(event) {
         event.preventDefault();
         addNewStop(newStop);
+        setNewStop('');
     };
 
 
@@ -15,7 +16,8 @@ export default function HikeStopsForm({ addNewStop }) {
         <form className="spots-form" onSubmit={_handleNewStop}>
             <label>A stop at some spots?
             <input 
-                name="newStops"
+                name="name"
+                type="text"
                 value={newStop}
                 onChange={(event) => setNewStop(event.target.value)}
                 placeholder="e.g. lookout, lake, etc." />

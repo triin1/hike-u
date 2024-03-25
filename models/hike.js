@@ -12,6 +12,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const spotSchema = new Schema({
+    content: {
+        type: String, // TODO: does this need to be objectID?
+    }
+}, {
+    timestamps: true
+});
+
 const hikeSchema = new Schema({
     title: {
         type: String,
@@ -40,7 +48,8 @@ const hikeSchema = new Schema({
     }],
     journal: {
         type: Schema.Types.ObjectId
-    }
+    },
+    spots: [spotSchema]
 }, {
     timestamps: true
 })

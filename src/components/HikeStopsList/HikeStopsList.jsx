@@ -11,7 +11,7 @@ export default function HikeStopsList() {
     }
 
     const hikeStopItems = stops.map((stop, index) => (
-        <HikeStopItem stopName={stop} key={index}/>
+        <HikeStopItem stop={stop} key={index}/>
     ));
 
     return (
