@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function JournalSearch() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   function handleSearchSubmit(event) {
     event.preventDefault();
-    const urlParams = new URLSearchParams(location.search);
+    const urlParams = new URLSearchParams();
     urlParams.set("searchTerm", searchTerm);
 
     const searchQuery = urlParams.toString();
