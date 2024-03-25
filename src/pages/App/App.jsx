@@ -9,9 +9,11 @@ import HomePage from "../HomePage/HomePage";
 import EquipmentPage from "../EquipmentPage/EquipmentPage";
 import JournalPage from "../JournalPage/JournalPage";
 import JournalFormPage from "../JournalFormPage/JournalFormPage";
+import JournalDetailPage from "../JournalDetailPage/JournalDetailPage";
+import JournalEditPage from "../JournalEditPage/JournalEditPage";
+import JournalSearchPage from "../JournalSearchPage/JournalSearchPage";
 import Layout from "../../components/Layout/Layout";
 import HikePage from "../HikePage/HikePage";
-import JournalDetailPage from "../JournalDetailPage/JournalDetailPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -28,6 +30,8 @@ function App() {
               <Route path="/journals/new" element={<JournalFormPage />} />
               <Route path="/adventures" element={<HikePage />} />
               <Route path="/journals/:id" element={<JournalDetailPage />} />
+              <Route path="/journals/:id/edit" element={<JournalEditPage />} />
+              <Route path="/journals/search" element={<JournalSearchPage />} />
             </Routes>
           </>
         </Layout>

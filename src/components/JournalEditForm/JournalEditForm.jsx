@@ -1,54 +1,25 @@
 import { useState } from "react";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
-import "./JournalForm.css";
+export default function JournalEditForm({
+  fetchedJournal,
+  handleUpdateJournal,
+}) {
+  const [editJournal, setEditJournal] = useState(fetchedJournal);
 
-export default function JournalForm({ addJournal }) {
-  const [newJournal, setNewJournal] = useState({
-    title: "",
-    image: "",
-    date: "",
-    difficulty: "",
-    content: "",
-  });
-
-  function handleAddJournal(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    //send to backend
-    const formData = new FormData();
-    formData.append("title", newJournal.title);
-    formData.append("image", newJournal.image);
-    formData.append("date", newJournal.date);
-    formData.append("difficulty", newJournal.difficulty);
-    formData.append("content", newJournal.content);
-
-    for (const pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
+    try {
+      await handleUpdateJournal(editJournal);
+      console.log("Journal updated successfully!");
+    } catch (error) {
+      console.error("Error updating journal:", error);
     }
-
-    addJournal(formData);
-
-    setNewJournal({
-      title: "",
-      image: "",
-      date: "",
-      difficulty: "",
-      content: "",
-    });
   }
 
   return (
     <>
-      <div className="px-4 py-5 my-5 text-center">
-        <h1 className="display-5 fw-bold">Hiking Journal</h1>
-        <div className="col-lg-6 mx-auto">
-          <p className="lead">Leave your memory</p>
-        </div>
-      </div>
-
       <div className="row justify-content-center">
         <div className="col-8">
-          <form onSubmit={handleAddJournal}>
+          <form onSubmit={handleSubmit}>
             <div className="row g-3">
               <div className="col-12">
                 <label className="form-label">Title</label>
@@ -56,51 +27,42 @@ export default function JournalForm({ addJournal }) {
                   className="form-control"
                   id="title"
                   type="text"
-                  value={newJournal.title}
+                  value={editJournal?.title}
                   onChange={(event) =>
-                    setNewJournal({ ...newJournal, title: event.target.value })
+                    setEditJournal({
+                      ...editJournal,
+                      title: event.target.value,
+                    })
                   }
                 />
               </div>
 
-              <div className="col-12">
-                <label>Image</label>
-                <input
-                  type="file"
-                  className="form-control"
-                  id="image"
-                  onChange={(event) =>
-                    setNewJournal({
-                      ...newJournal,
-                      image: event.target.files[0],
-                    })
-                  }
-                  accept="image/*"
-                />
-              </div>
               <div className="row g-3">
-                <div className="col-6">
+                {/* <div className="col-6">
                   <label className="form-label">Hiking Date</label>
                   <input
                     className="form-control"
                     id="date"
                     type="date"
-                    value={newJournal.date}
+                    value={fetchedJournal?.date}
                     onChange={(event) =>
-                      setNewJournal({ ...newJournal, date: event.target.value })
+                      setFetchedJournal({
+                        ...fetchedJournal,
+                        date: event.target.value,
+                      })
                     }
                   />
-                </div>
+                </div> */}
 
                 <div className="col-6">
                   <label className="form-label">Difficulty</label>
                   <select
                     className="form-select form-control"
                     id="difficulty"
-                    value={newJournal.difficulty}
+                    value={editJournal?.difficulty}
                     onChange={(event) =>
-                      setNewJournal({
-                        ...newJournal,
+                      setEditJournal({
+                        ...editJournal,
                         difficulty: event.target.value,
                       })
                     }
@@ -122,10 +84,10 @@ export default function JournalForm({ addJournal }) {
                       cols="30"
                       rows="4"
                       id="content"
-                      value={newJournal.content}
+                      value={editJournal?.content}
                       onChange={(event) =>
-                        setNewJournal({
-                          ...newJournal,
+                        setEditJournal({
+                          ...editJournal,
                           content: event.target.value,
                         })
                       }
@@ -136,7 +98,7 @@ export default function JournalForm({ addJournal }) {
             </div>
             <div className="col-12 text-center">
               <button type="submit" className="btn btn-dark">
-                Publish
+                Update
               </button>
             </div>
           </form>

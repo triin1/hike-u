@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import "./JournalDetail.css";
+import { Link, useParams } from "react-router-dom";
 
 export default function JournalDetail({ journalDetail }) {
+  const { id } = useParams();
+
   return (
     <div className="container mt-4">
       <div className="row">
@@ -27,6 +30,8 @@ export default function JournalDetail({ journalDetail }) {
               <p className="card-text">{journalDetail.content}</p>
             </div>
           </div>
+
+          <Link to={`/journals/${id}/edit`}>Edit Journal</Link>
         </div>
       </div>
     </div>

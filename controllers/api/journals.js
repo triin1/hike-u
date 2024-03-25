@@ -4,6 +4,7 @@ const cloudinary = require("../../utils/cloudinary");
 async function create(req, res) {
   try {
     console.log("create journal", req.body);
+
     // Validate input data
     const { title, date, difficulty, content } = req.body;
     if (!title || !date || !difficulty || !content) {
@@ -34,7 +35,20 @@ async function create(req, res) {
 
 async function index(req, res) {
   try {
-    const journals = await Journal.find({}).populate("user");
+    let journals;
+    const searchTerm = req.query.searchTerm;
+
+    if (searchTerm) {
+      journals = await Journal.find({
+        $or: [
+          { title: { $regex: searchTerm, $options: "i" } },
+          { content: { $regex: searchTerm, $options: "i" } },
+        ],
+      }).populate("user");
+    } else {
+      journals = await Journal.find({}).populate("user");
+    }
+
     res.json(journals);
   } catch (err) {
     console.log(err);
@@ -59,9 +73,32 @@ async function show(req, res) {
   }
 }
 
+async function update(req, res) {
+  console.log("update journey", req.params.id);
+  console.log("update journey with data", req.body);
+  try {
+    const updatedPost = await Journal.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          title: req.body.title,
+          // date: req.body.date,
+          difficulty: req.body.difficulty,
+          content: req.body.content,
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    console.log("update backend updated journal data", error);
+  }
+}
+
 module.exports = {
   create,
   index,
   delete: deleteJournal,
   show,
+  update,
 };

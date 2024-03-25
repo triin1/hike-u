@@ -6,12 +6,11 @@ module.exports = {
 
 async function createSpot(req, res) {
     const hike = await Hike.findById(req.params.id);
-    hike.spots.push(req.body);
+    // hike.spots.push(req.body);
     try {
-        // save changes made to hike model
-        await hike.save();
+        res.json(hike);
+        // await hike.save();
     } catch (err) {
-        console.log(err);
+        res.status(400).json(err);
     }
-    res.redirect(`/hikes/${hike._id}`);
 }
