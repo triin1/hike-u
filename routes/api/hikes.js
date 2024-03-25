@@ -5,7 +5,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 
 //All paths start with '/api/hikes'
 
-router.post('/', ensureLoggedIn, hikesController.createSpot);
+
 
 
 module.exports = router;
