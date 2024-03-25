@@ -1,18 +1,12 @@
-import { useState, useEffect, useLocation } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getJournal } from "../../utilities/journals-api";
 
 export default function JournalSearch() {
   const [searchTerm, setSearchTerm] = useState("");
-  const location = useLocation;
+  const [journalList, setJournalList] = useState([]);
+  const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
-      setSearchTerm(searchTermFromUrl);
-    }
-  }, [location.search]);
 
   function handleSearchSubmit(event) {
     event.preventDefault();

@@ -134,8 +134,8 @@ export default function JournalList({ journalList, handleDelete }) {
         </div>
 
         {/* right side */}
+        {/* search bar */}
         <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
-          {/* search bar */}
           <JournalSearch />
 
           {/* Achives */}
