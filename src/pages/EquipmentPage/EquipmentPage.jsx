@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import EquipmentForm from "../../components/EquipmentForm/EquipmentForm";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import "./EquipmentPage.css"
@@ -31,7 +31,13 @@ function EquipmentPage() {
         setFiltered(filteredEquipment);
       }
 
-    // TODO: add useEffect to load the equipment previously entered
+    useEffect(() => {
+        async function fetchData() {
+            const allEquipment = await equipmentAPI.getAll();
+            setEquipmentItems(allEquipment)
+        }
+        fetchData();
+    }, []);
 
     return (
         <div className="equipment-container">
