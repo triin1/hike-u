@@ -12,7 +12,7 @@ export default function JournalSearchPage() {
     if (searchTermFromUrl) {
       try {
         async function fetchSearchedResult() {
-          const journals = await getJournal();
+          const journals = await getJournal(searchTermFromUrl);
 
           setJournalList(journals);
         }
