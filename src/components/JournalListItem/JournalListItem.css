@@ -2,11 +2,11 @@
   font-family: "Lora", serif;
 }
 
-.card:hover {
+.journalCard:hover {
   transform: scale(1.05);
 }
 
-.card {
+.journalCard {
   border: none;
   background-color: transparent;
 }

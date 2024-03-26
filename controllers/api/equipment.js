@@ -38,7 +38,6 @@ async function setItemQuantity(req, res) {
         const item = await Equipment.findById({_id: req.body.itemId});
         if (item && req.body.newQuantity <= 0) {
             await Equipment.deleteOne({_id: req.params.id, user: req.user._id});
-            // await item.deleteOne({_id: req.body.itemId});
         } else {
         item.quantity = req.body.newQuantity
         }

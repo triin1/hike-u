@@ -3,7 +3,9 @@ import HikeStopsList from "../../components/HikeStopsList/HikeStopsList";
 import HikeDetails from "../../components/HikeDetails/HikeDetails";
 import HikeMap from "../../components/HikeMap/HikeMap";
 import HikeDescription from "../../components/HikeDescription/HikeDescription";
-import HikeWeather from "../../components/HikeWeather/HikeWeather";
+import HikeDate from "../../components/HikeDate/HikeDate";
+import HikeWeatherForecast from "../../components/HikeWeatherForecast/HikeWeatherForecast";
+import { getWeather } from "../../utilities/weather-api";
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
@@ -17,27 +19,41 @@ function HikePage() {
         title: "",
         description: "",
         startDate: null,
-        endDate: null
+        endDate: null,
+        equipments: []
     });
+
+    const [forecast, setForecast] = useState(null)
 
     // Used to update the hike state, the newValue must be an object
     const updateHikeState = (newValue) => {
-        const hikeCopy = {...hike}
-        const newHike = {...hikeCopy, ...newValue}
+        const hikeCopy = { ...hike }
+        const newHike = { ...hikeCopy, ...newValue }
         setHike(newHike)
     }
 
-    const getHike = () => {
-        return hike;
-    }
+    // used to fetch the weather forecast
+    useEffect(() => {
+        async function getWeatherForecast() {
+            if (hike.startLocation && hike.endLocation) {
+                const weatherForecast = await getWeather(hike.startLocation, hike.endLocation)
+                setForecast(weatherForecast)
+            }
+        }
+        getWeatherForecast()
+    }, [hike.startLocation, hike.endLocation])
 
     return (
         <div>
-            <HikeMap updateHikeState = {updateHikeState} />
-            <HikeDescription updateHikeState = {updateHikeState} />
-            <HikeWeather updateHikeState = {updateHikeState} hike = {hike} />
+            <div className="d-flex flex-row" >
+                <HikeMap updateHikeState={updateHikeState} />
+                <HikeWeatherForecast forecast={forecast} />
+            </div>
+            <HikeDescription updateHikeState={updateHikeState} />
+            <HikeDate updateHikeState={updateHikeState} hike={hike} />
             <HikeStopsList />
             <HikeDetails />
+            <button>Save Hike Plan</button>
         </div>
     )
 }

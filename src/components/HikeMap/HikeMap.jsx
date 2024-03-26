@@ -7,7 +7,7 @@ import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-d
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOXGL_TOKEN
 
-function HikeMap({updateHikeState}) {
+function HikeMap({ updateHikeState }) {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const directions = useRef(null);
@@ -54,17 +54,22 @@ function HikeMap({updateHikeState}) {
     }, []);
 
     const handleRouteUpdate = (evt) => {
-        routeDistance.current = evt.route[0].distance
-        originLocation.current = directions.current.getOrigin().geometry.coordinates;
-        destinationLocation.current = directions.current.getDestination().geometry.coordinates
-        handleUpdateHikeState()
+        try {
+            routeDistance.current = evt.route[0].distance
+            originLocation.current = directions.current.getOrigin().geometry.coordinates;
+            destinationLocation.current = directions.current.getDestination().geometry.coordinates
+            handleUpdateHikeState()
+        } catch (err) {
+            console.log(err)
+        }
+
     };
 
-     const handleUpdateHikeState = () => {
+    const handleUpdateHikeState = () => {
         const distance = routeDistance.current
         const startLocation = originLocation.current
         const endLocation = destinationLocation.current
-        updateHikeState({distance, startLocation, endLocation})
+        updateHikeState({ distance, startLocation, endLocation })
     }
 
     return (
