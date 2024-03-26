@@ -18,6 +18,7 @@ function AuthPage({ setUser }) {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          minHeight: "100vh",
         }}
       >
         <div className="container">
