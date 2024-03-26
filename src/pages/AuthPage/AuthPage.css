@@ -1,6 +1,6 @@
 .authBackground {
   background-position: top left;
-  animation: mymove 15s infinite;
+  animation: mymove 20s infinite;
 }
 
 @keyframes mymove {
