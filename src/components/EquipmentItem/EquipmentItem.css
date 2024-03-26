@@ -20,7 +20,7 @@
 }
 
 .hover-bin:hover + .hide {
-    display: block;
+    display: inline;
     color: black;
 }
 
