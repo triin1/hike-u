@@ -8,5 +8,6 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn')
 router.post('/', ensureLoggedIn, equipmentController.create);
 router.get('/', ensureLoggedIn, equipmentController.index);
 router.delete('/:id', ensureLoggedIn, equipmentController.delete)
+router.put('/', ensureLoggedIn, equipmentController.setItemQuantity);
 
 module.exports = router;
