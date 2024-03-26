@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./JournalList.css";
-import { Link } from "react-router-dom";
 import Achive from "../Achive/Achive";
 import JournalSearch from "../JournalSearch/JournalSearch";
 import JournalListItem from "../JournalListItem/JournalListItem";
@@ -58,8 +57,8 @@ export default function JournalList({ journalList, handleDelete }) {
     : journalList;
 
   //map throught all journal in the list (include "delete" button)
-  const list = filteredJournalList.map((journal) => (
-    <JournalListItem journal={journal} handleDelete={handleDelete} />
+  const list = filteredJournalList.map((journal, i) => (
+    <JournalListItem key={i} journal={journal} handleDelete={handleDelete} />
   ));
 
   return (

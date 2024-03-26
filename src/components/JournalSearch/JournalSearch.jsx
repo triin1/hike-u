@@ -12,7 +12,8 @@ export default function JournalSearch() {
     urlParams.set("searchTerm", searchTerm);
 
     const searchQuery = urlParams.toString();
-    navigate(`/journals/search?${searchQuery}`);
+    //App->Route
+    navigate(`/journal?${searchQuery}`);
   }
 
   return (
