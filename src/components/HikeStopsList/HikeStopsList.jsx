@@ -5,11 +5,7 @@ import * as spotsAPI from "../../utilities/hikes-api";
 
 export default function HikeStopsList() {
 
-    const [stops, setStops] = useState([
-        {
-            name: ''
-        }
-    ]);
+    const [stops, setStops] = useState([]);
 
     async function addNewStop(newSpot) {
         try {
@@ -22,7 +18,7 @@ export default function HikeStopsList() {
     }
 
     const hikeStopItems = stops.map((stop, index) => (
-        <HikeStopItem stop={stop.name} key={index} index={index}/>
+        <HikeStopItem stop={stop} key={index} index={index}/>
     ));
 
     return (

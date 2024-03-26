@@ -32,8 +32,20 @@ async function deleteEquipment(req, res) {
     }
 };
 
+// Updates an item's quantity
+async function setItemQuantity(req, res) {
+    try {
+        const item = await Equipment.getAll(req.user._id);
+        await item.setQuantity(req.body.itemId, req.body.newQuantity);
+    res.json(item);
+    } catch(err) {
+        res.status(400).json(err);
+    }
+};
+
 module.exports = {
     create,
     index,
-    delete: deleteEquipment
+    delete: deleteEquipment,
+    setItemQuantity
 }

@@ -1,10 +1,10 @@
 import "./EquipmentItem.css"
 
-function EquipmentList( {equipment, deleteEquipment} ) {
-    
+function EquipmentItem( {equipment, deleteEquipment, handleQuantityChange} ) {
+    console.log(equipment._id)
     return (
         <div className="item-container"> 
-            <p className="item-name">{equipment.quantity} {equipment.name}</p>
+            <p className="item-name"><button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)}>-</button>{equipment.quantity}<button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)}>+</button> {equipment.name}</p>
             <div className="cat-container">
                 {equipment.categories.map((cat, index) => (
                     <p key={index} className="cat-item">{cat}</p>
@@ -16,5 +16,5 @@ function EquipmentList( {equipment, deleteEquipment} ) {
 };
 
 
-export default EquipmentList
+export default EquipmentItem
 
