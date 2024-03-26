@@ -44,9 +44,11 @@ async function index(req, res) {
           { title: { $regex: searchTerm, $options: "i" } },
           { content: { $regex: searchTerm, $options: "i" } },
         ],
-      }).populate("user");
+      })
+        .populate("user")
+        .sort({ date: -1 });
     } else {
-      journals = await Journal.find({}).populate("user");
+      journals = await Journal.find({}).populate("user").sort({ date: -1 });
     }
 
     res.json(journals);
