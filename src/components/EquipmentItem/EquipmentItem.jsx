@@ -32,6 +32,5 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
     )
 };
 
-
 export default EquipmentItem
 
