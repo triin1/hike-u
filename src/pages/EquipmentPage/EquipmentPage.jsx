@@ -3,6 +3,7 @@ import EquipmentForm from "../../components/EquipmentForm/EquipmentForm";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import "./EquipmentPage.css"
 import EquipmentFilter from "../../components/EquipmentFilter/EquipmentFilter";
+import BuyEquipment from "../../components/BuyEquipment/BuyEquipment";
 import * as equipmentAPI from "../../utilities/equipment-api";
 
 function EquipmentPage() {
@@ -37,6 +38,9 @@ function EquipmentPage() {
             <h1 className="item-a">Manage your equipment</h1>
             <div className="item-b">
                 <EquipmentForm addEquipment={addEquipment}/>
+            </div>
+            <div>
+                <BuyEquipment />
             </div>
             <div className="item-c">
                 <h4>List of your equipment</h4>
