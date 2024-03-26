@@ -11,7 +11,6 @@ import JournalPage from "../JournalPage/JournalPage";
 import JournalFormPage from "../JournalFormPage/JournalFormPage";
 import JournalDetailPage from "../JournalDetailPage/JournalDetailPage";
 import JournalEditPage from "../JournalEditPage/JournalEditPage";
-// import JournalSearchPage from "../JournalSearchPage/JournalSearchPage";
 import Layout from "../../components/Layout/Layout";
 import HikePage from "../HikePage/HikePage";
 
@@ -31,7 +30,6 @@ function App() {
               <Route path="/adventures" element={<HikePage />} />
               <Route path="/journals/:id" element={<JournalDetailPage />} />
               <Route path="/journals/:id/edit" element={<JournalEditPage />} />
-              {/* <Route path="/journals/search" element={<JournalPage />} /> */}
             </Routes>
           </>
         </Layout>
