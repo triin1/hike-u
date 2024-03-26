@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as usersService from "../../utilities/users-service";
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm({ setUser, handleSwitchForm }) {
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -28,24 +28,22 @@ export default function LoginForm({ setUser }) {
   }
 
   return (
-    // <div>
-    //   <div classNameName="form-container">
-    //     <form autoComplete="off" onSubmit={handleSubmit}>
-    //       <label>Email</label>
-    //       <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-    //       <label>Password</label>
-    //       <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-    //       <button type="submit">LOG IN</button>
-    //     </form>
-    //   </div>
-    //   <p classNameName="error-message">&nbsp;{error}</p>
-    // </div>
     <div className="card border-0 rounded-4">
       <div className="card-body p-3 p-md-4 p-xl-5">
         <div className="row">
           <div className="col-12">
             <div className="mb-4">
               <h3>Sign in</h3>
+              <p>
+                Don&apos;t have account ?
+                <button
+                  type="button"
+                  className="btn btn-link"
+                  onClick={handleSwitchForm}
+                >
+                  Sign Up
+                </button>
+              </p>
             </div>
           </div>
         </div>
