@@ -41,7 +41,7 @@ function EquipmentPage() {
             <div className="item-c">
                 <h4>List of your equipment</h4>
                 <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
-                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} setEquipmentItems={setEquipmentItems}/>
+                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={ filtered } setEquipmentItems={ setEquipmentItems }/>
             </div>
         </div>
     )

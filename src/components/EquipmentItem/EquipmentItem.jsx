@@ -7,10 +7,13 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
     async function handleQuantityChange(itemId, newQuantity) {
         try {
             await equipmentAPI.setItemQuantity(itemId, newQuantity);
+            if (newQuantity === 0) {
+                await equipmentAPI.deleteEquipment(itemId);
+            }
             const allEquipment = await equipmentAPI.getAll();
             setEquipmentItems(allEquipment)
-            } catch(err) {
-        }
+        } catch(err) {
+        } 
     }
 
     return (

@@ -36,11 +36,12 @@ async function deleteEquipment(req, res) {
 async function setItemQuantity(req, res) {
     try {
         const item = await Equipment.findById({_id: req.body.itemId});
-        // if (item && req.body.newQuantity <= 0) {
-        //     await item.deleteOne({_id: req.body.itemId});
-        // } else {
+        if (item && req.body.newQuantity <= 0) {
+            await Equipment.deleteOne({_id: req.params.id, user: req.user._id});
+            // await item.deleteOne({_id: req.body.itemId});
+        } else {
         item.quantity = req.body.newQuantity
-        // }
+        }
         item.save();
         res.json(item);
     } catch(err) {
