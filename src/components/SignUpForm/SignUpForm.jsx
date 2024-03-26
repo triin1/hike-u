@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { signUp } from "../../utilities/users-service";
+import "./SignUpForm.css";
 
 export default class SignUpForm extends Component {
   state = {
@@ -36,7 +37,7 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div className="card border-0 rounded-4">
+      <div className="card border-0 rounded-4 signUpForm">
         <div className="card-body p-3 p-md-4 p-xl-5">
           <div className="row">
             <div className="col-12">
@@ -46,10 +47,10 @@ export default class SignUpForm extends Component {
                   Already have an account{" "}
                   <button
                     type="button"
-                    class="btn btn-link"
+                    className="btn btn-link"
                     onClick={this.props.handleSwitchForm}
                   >
-                    Switch to SignIn
+                    Sign In
                   </button>
                 </p>
               </div>
@@ -124,7 +125,7 @@ export default class SignUpForm extends Component {
               <div className="col-12">
                 <div className="d-grid">
                   <button
-                    className="btn btn-primary btn-lg"
+                    className="btn btn-dark btn-lg"
                     type="submit"
                     disabled={disable}
                   >

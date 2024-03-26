@@ -2,6 +2,7 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { useState } from "react";
 import backgroundImage from "../../images/signIn.jpg";
+import "./AuthPage.css";
 
 function AuthPage({ setUser }) {
   const [showLogInForm, setShowLogInForm] = useState(true);
@@ -13,11 +14,10 @@ function AuthPage({ setUser }) {
   return (
     <main>
       <section
-        className="bg-primary py-3 py-md-5 py-xl-8"
+        className="bg-primary py-3 py-md-5 py-xl-8 authBackground"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
           minHeight: "100vh",
         }}
       >

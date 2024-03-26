@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as usersService from "../../utilities/users-service";
+import "./LoginForm.css";
 
 export default function LoginForm({ setUser, handleSwitchForm }) {
   const [credentials, setCredentials] = useState({
@@ -28,7 +29,7 @@ export default function LoginForm({ setUser, handleSwitchForm }) {
   }
 
   return (
-    <div className="card border-0 rounded-4">
+    <div className="card border-0 rounded-4 loginForm">
       <div className="card-body p-3 p-md-4 p-xl-5">
         <div className="row">
           <div className="col-12">
@@ -85,8 +86,8 @@ export default function LoginForm({ setUser, handleSwitchForm }) {
             </div>
             <div className="col-12">
               <div className="d-grid">
-                <button className="btn btn-primary btn-lg" type="submit">
-                  Log in now
+                <button className="btn btn-dark btn-lg" type="submit">
+                  Log in
                 </button>
               </div>
             </div>
