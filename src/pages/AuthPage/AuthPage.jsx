@@ -4,7 +4,7 @@ import { useState } from "react";
 import backgroundImage from "../../images/signIn.jpg";
 
 function AuthPage({ setUser }) {
-  const [showLogInForm, setShowLogInForm] = useState(false);
+  const [showLogInForm, setShowLogInForm] = useState(true);
 
   function handleSwitchForm() {
     setShowLogInForm(!showLogInForm);
