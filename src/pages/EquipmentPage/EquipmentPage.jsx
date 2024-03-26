@@ -24,16 +24,6 @@ function EquipmentPage() {
         setEquipmentItems(updatedEquipment);
     }
 
-    // Change the quantity of the equipment you have
-    async function handleQuantityChange(itemId, newQuantity) {
-        try {
-            const updatedEquipment = await equipmentAPI.setItemQuantity(itemId, newQuantity);
-            setEquipmentItems(updatedEquipment)
-        } catch(err) {
-            console.log("equipment not updated", err)
-        }
-    }
-
     useEffect(() => {
         async function fetchData() {
             const allEquipment = await equipmentAPI.getAll();
@@ -51,7 +41,7 @@ function EquipmentPage() {
             <div className="item-c">
                 <h4>List of your equipment</h4>
                 <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
-                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} handleQuantityChange={handleQuantityChange}/>
+                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={filtered} setEquipmentItems={setEquipmentItems}/>
             </div>
         </div>
     )
