@@ -3,6 +3,7 @@ import "./JournalList.css";
 import Achive from "../Achive/Achive";
 import JournalSearch from "../JournalSearch/JournalSearch";
 import JournalListItem from "../JournalListItem/JournalListItem";
+import Newsletter from "../Newsletter/Newsletter";
 
 export default function JournalList({ journalList, handleDelete }) {
   const [reverse, setReverse] = useState(false);
@@ -101,6 +102,11 @@ export default function JournalList({ journalList, handleDelete }) {
               selectedDate={selectedDate}
               handleDateSelect={handleDateSelect}
             />
+          </div>
+
+          {/* Newsletter */}
+          <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+            <Newsletter />
           </div>
         </div>
       </div>

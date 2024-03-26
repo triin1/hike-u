@@ -24,14 +24,14 @@ const NavBar = ({ user, setUser }) => {
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
       >
         <svg className="bi pe-none me-2" width="40" height="32"></svg>
-        <span className="fs-4">Hike-U</span>
+        <span className="fs-2 fw-bold">Hike-U</span>
       </a>
       <hr />
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         &#9776;
       </button>
       <nav className={`nav flex-column`}>
-        <Link className="nav-link active" to="/">
+        <Link className="nav-link" to="/">
           Home
         </Link>
         <Link className="nav-link" to="/journal">
