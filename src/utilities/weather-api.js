@@ -14,7 +14,7 @@ export async function getWeather(startLocation, endLocation) {
     const data = {
         weather: weatherData,
         temp: tempData,
-        ciry: cityData
+        city: cityData
     }
     return data
 }
