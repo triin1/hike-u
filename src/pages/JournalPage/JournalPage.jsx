@@ -36,17 +36,16 @@ export default function JournalPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
-      try {
-        async function fetchSearchedResult() {
-          const journals = await getJournal(searchTermFromUrl);
-          setJournalList(journals);
-        }
-        fetchSearchedResult();
-        console.log("get search results");
-      } catch (err) {
-        console.log("find searched journal", err);
+
+    try {
+      async function fetchSearchedResult() {
+        const journals = await getJournal(searchTermFromUrl);
+        setJournalList(journals);
       }
+      fetchSearchedResult();
+      console.log("get search results");
+    } catch (err) {
+      console.log("find searched journal", err);
     }
   }, [location.search]);
 
