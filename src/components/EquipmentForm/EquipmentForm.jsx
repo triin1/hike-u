@@ -8,6 +8,7 @@ function EquipmentForm({ addEquipment }) {
   });
   const [category, setCategory] = useState({
     categories: [],
+    response: []
   });
 
   async function _handleAddNewEquipment(event) {
@@ -21,9 +22,6 @@ function EquipmentForm({ addEquipment }) {
       name: "",
       quantity: 1,
     });
-    setCategory ({
-      categories: [],
-    })
   }
 
   function _handleNameChange(event) {
@@ -35,15 +33,17 @@ function EquipmentForm({ addEquipment }) {
   }
 
   function _handleCategoryChange(event) {
-    const { value, checked } = event.target;
+    let { value, checked } = event.target;
     const { categories } = category;
     if (checked) {
       setCategory({
         categories: [...categories, value],
+        response: [...categories, value]
       });
     } else {
       setCategory({
         categories: categories.filter((event) => event !== value),
+        response: categories.filter((event) => event !== value)
       });
     }
   }
@@ -158,6 +158,17 @@ function EquipmentForm({ addEquipment }) {
               onChange={_handleCategoryChange}
             />
           </label>
+        
+        <div>
+          <label></label>
+          <textarea 
+            name="response"
+            value={category.response}
+            onChange={_handleCategoryChange}
+            placeholder="Your selected categories will appear here"
+          ></textarea>
+        </div>
+        
         </div>
         <button type="submit">ADD EQUIPMENT</button>
       </form>

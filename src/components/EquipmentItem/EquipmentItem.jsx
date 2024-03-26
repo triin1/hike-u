@@ -24,7 +24,10 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
                     <p key={index} className="cat-item">{cat}</p>
                 ))}
             </div>
-        <button onClick={ () => deleteEquipment(equipment._id)}>Delete</button>
+        <div>
+            <button className="hover-bin" onClick={ () => deleteEquipment(equipment._id)}><span role="img">{String.fromCodePoint(10060)}</span></button>
+            <p className="hide">Delete item</p>
+        </div>
         </div>
     )
 };
