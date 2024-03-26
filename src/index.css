@@ -5,3 +5,7 @@ a {
 .ql-editor {
   font-size: 1.05rem;
 }
+
+body {
+  background-color: rgb(238, 243, 247);
+}

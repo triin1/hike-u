@@ -6,7 +6,10 @@ import "./JournalListItem.css";
 export default function JournalListItem({ journal, handleDelete }) {
   return (
     <div className="col" key={journal._id}>
-      <div className="card mb-3 no-border" style={{ maxWidth: "800px" }}>
+      <div
+        className="card mb-3 no-border journalCard"
+        style={{ maxWidth: "800px" }}
+      >
         <div className="row g-0">
           <div className="col-md-4 d-flex pt-5 justify-content-center">
             <div className="image-container">

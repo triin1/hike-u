@@ -1,0 +1,10 @@
+.authBackground {
+  background-position: top left;
+  animation: mymove 15s infinite;
+}
+
+@keyframes mymove {
+  50% {
+    background-position: center;
+  }
+}

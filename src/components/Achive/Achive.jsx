@@ -5,8 +5,8 @@ export default function Achive({
 }) {
   return (
     <>
-      <h3 className="sidebar-heading">Archives</h3>
-      <ul className="list-group archives">
+      <h3 className="sidebar-heading mb-4">Archives</h3>
+      <ul className="list-group">
         {uniqueMonthYear.map((monthYear, index) => (
           <li
             key={index}
