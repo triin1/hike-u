@@ -35,9 +35,14 @@ async function deleteEquipment(req, res) {
 // Updates an item's quantity
 async function setItemQuantity(req, res) {
     try {
-        const item = await Equipment.getAll(req.user._id);
-        await item.setQuantity(req.body.itemId, req.body.newQuantity);
-    res.json(item);
+        const item = await Equipment.findById({_id: req.body.itemId});
+        // if (item && req.body.newQuantity <= 0) {
+        //     await item.deleteOne({_id: req.body.itemId});
+        // } else {
+        item.quantity = req.body.newQuantity
+        // }
+        item.save();
+        res.json(item);
     } catch(err) {
         res.status(400).json(err);
     }
