@@ -27,15 +27,12 @@ const hikeSchema = new Schema({
     },
     latitude: {
         type: Number,
-        required: true
+
     },
     longtitude: {
         type: Number,
-        required: true
+
     },
-    spot: [{
-        type: String
-    }],
     startDate: {
         type: Date,
     },

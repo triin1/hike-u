@@ -1,32 +1,34 @@
 import { useState } from "react";
 import './HikeStopsForm.css';
 
-export default function HikeStopsForm({ addNewStop, stops }) {
+export default function HikeStopsForm({ addNewStop }) {
 
-    const [newStop, setNewStop] = useState('');
+    const [newStop, setNewStop] = useState({
+        name: ''
+    });
 
     function _handleNewStop(event) {
         event.preventDefault();
         addNewStop(newStop);
-        setNewStop('');
+        console.log(newStop);
+        setNewStop({
+            name: ''
+        });
     };
 
-    // function _handleChange(event) {
-    //     const updatedSpot = {
-    //         ...newStop,
-    //         [event.target.name]: event.target.value,
-    //     };
-    //     setNewStop(updatedSpot);
-    // }
+    function _handleChange(event) {
+        setNewStop({...newStop,
+            [event.target.name]: event.target.value});
+    }
 
 
     return (
         <form className="spots-form" onSubmit={_handleNewStop}>
             <label>A stop at some spots?</label>
             <input 
-                name="stop"
-                value={newStop}
-                onChange={(event) => setNewStop(event.target.value)}
+                name="name"
+                value={newStop.name}
+                onChange={_handleChange}
                 placeholder="e.g. lookout, lake, etc." />
                 
             <button type='submit'>Save</button>

@@ -18,3 +18,12 @@
     height: 150px;
   }
 }
+
+.sidebar-box {
+  margin-top: 60px;
+  max-width: 90%;
+}
+
+.search-bar {
+  max-width: 90%;
+}
