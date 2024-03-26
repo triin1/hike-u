@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router";
 import { getUser } from "../../utilities/users-service";
 import AuthPage from "../AuthPage/AuthPage";
+import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../../components/NavBar/NavBar";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import HomePage from "../HomePage/HomePage";
@@ -36,6 +37,7 @@ function App() {
       ) : (
         <AuthPage setUser={setUser} />
       )}
+      <ToastContainer />
     </div>
   );
 }
