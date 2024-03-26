@@ -3,6 +3,7 @@ import HikeStopsList from "../../components/HikeStopsList/HikeStopsList";
 import HikeDetails from "../../components/HikeDetails/HikeDetails";
 import HikeMap from "../../components/HikeMap/HikeMap";
 import HikeDescription from "../../components/HikeDescription/HikeDescription";
+import HikeWeather from "../../components/HikeWeather/HikeWeather";
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
@@ -11,26 +12,30 @@ function HikePage() {
     // then to other children from there
     const [hike, setHike] = useState({
         distance: 0,
-        startLocation: [],
-        endLocation: [],
+        startLocation: null,
+        endLocation: null,
         title: "",
-        description: ""
+        description: "",
+        startDate: null,
+        endDate: null
     });
 
     // Used to update the hike state, the newValue must be an object
     const updateHikeState = (newValue) => {
-        const hikeCopy = {...hike, ...newValue}
-        setHike(hikeCopy)
+        const hikeCopy = {...hike}
+        const newHike = {...hikeCopy, ...newValue}
+        setHike(newHike)
     }
 
-    useEffect(() => {
-        console.log(hike)
-    }, [hike])
+    const getHike = () => {
+        return hike;
+    }
 
     return (
         <div>
             <HikeMap updateHikeState = {updateHikeState} />
             <HikeDescription updateHikeState = {updateHikeState} />
+            <HikeWeather updateHikeState = {updateHikeState} hike = {hike} />
             <HikeStopsList />
             <HikeDetails />
         </div>

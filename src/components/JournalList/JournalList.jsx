@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./JournalList.css";
-import { Link } from "react-router-dom";
 import Achive from "../Achive/Achive";
 import JournalSearch from "../JournalSearch/JournalSearch";
 import JournalListItem from "../JournalListItem/JournalListItem";
@@ -58,18 +57,20 @@ export default function JournalList({ journalList, handleDelete }) {
     : journalList;
 
   //map throught all journal in the list (include "delete" button)
-  const list = filteredJournalList.map((journal) => (
-    <JournalListItem journal={journal} handleDelete={handleDelete} />
+  const list = filteredJournalList.map((journal, i) => (
+    <JournalListItem key={i} journal={journal} handleDelete={handleDelete} />
   ));
 
   return (
     <div>
       <div className="row d-flex">
         {/* middle part */}
-        <div className="col-xl-9 py-5 px-md-5">
+        <div className="col-xl-8 py-5 px-md-5">
           <div className="row">
             <h1 className="display-5 fw-bold">Journal</h1>
           </div>
+
+          {/* display descending order */}
           <button
             onClick={() => {
               setReverse(!reverse);
@@ -77,6 +78,7 @@ export default function JournalList({ journalList, handleDelete }) {
           >
             Display descending order
           </button>
+
           {/* card display */}
           <div className="row row-cols-lg-1 row-cols-md-1 row-cols-sm-2 g-4 justify-content-center">
             {reverse ? list.reverse() : list}
@@ -84,12 +86,13 @@ export default function JournalList({ journalList, handleDelete }) {
         </div>
 
         {/* right side */}
-        {/* search bar */}
         <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
-          <JournalSearch />
-
+          {/* search bar */}
+          <div className="row row-3 search-bar">
+            <JournalSearch />
+          </div>
           {/* Achives */}
-          <div className="sidebar-box ftco-animate fadeInUp ftco-animated">
+          <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
             <Achive
               uniqueMonthYear={uniqueMonthYear}
               selectedDate={selectedDate}

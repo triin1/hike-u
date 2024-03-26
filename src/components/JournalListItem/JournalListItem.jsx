@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
+import "./JournalListItem.css";
+// import { Trash } from "bootstrap-icons-react";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function JournalListItem({ journal, handleDelete }) {
   return (
     <div className="col" key={journal._id}>
-      <div className="card mb-3 no-border" style={{ maxWidth: "540px" }}>
+      <div className="card mb-3 no-border" style={{ maxWidth: "800px" }}>
         <div className="row g-0">
-          <div className="col-md-4 d-flex align-items-center justify-content-center">
+          <div className="col-md-4 d-flex pt-5 justify-content-center">
             <div className="image-container">
               <img
                 src={journal.image ? journal.image : "./images/test.jpg"}
@@ -15,17 +18,9 @@ export default function JournalListItem({ journal, handleDelete }) {
               />
             </div>
           </div>
-          <div className="col-md-8">
-            {/* delelte journal */}
-            <button
-              type="submit"
-              className="btn-close btn-close-dark position-absolute top-0 end-0 mt-2 me-2"
-              aria-label="Close"
-              onClick={() => handleDelete(journal._id)}
-            ></button>
-
+          <div className="col-12 col-md-8">
             <div className="card-body">
-              <h5 className="card-title">{journal.title}</h5>
+              <h2 className="card-title content-title">{journal.title}</h2>
 
               <p className="card-text">
                 <small className="text-muted">
@@ -47,6 +42,17 @@ export default function JournalListItem({ journal, handleDelete }) {
                   Last updated{" "}
                   {new Date(journal.updatedAt).toLocaleDateString()}
                 </small>
+
+                {/* delelte journal */}
+                <button
+                  type="submit"
+                  className="btn btn-link btn-sm delete-button"
+                  style={{ color: "gray" }}
+                  aria-label="Close"
+                  onClick={() => handleDelete(journal._id)}
+                >
+                  Delete
+                </button>
               </p>
             </div>
           </div>

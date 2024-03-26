@@ -1,7 +1,21 @@
 import "./EquipmentItem.css"
+import * as equipmentAPI from "../../utilities/equipment-api";
 
-function EquipmentItem( {equipment, deleteEquipment, handleQuantityChange} ) {
-    console.log(equipment._id)
+function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
+    
+    // Change the quantity of the equipment you have
+    async function handleQuantityChange(itemId, newQuantity) {
+        try {
+            await equipmentAPI.setItemQuantity(itemId, newQuantity);
+            if (newQuantity === 0) {
+                await equipmentAPI.deleteEquipment(itemId);
+            }
+            const allEquipment = await equipmentAPI.getAll();
+            setEquipmentItems(allEquipment)
+        } catch(err) {
+        } 
+    }
+
     return (
         <div className="item-container"> 
             <p className="item-name"><button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)}>-</button>{equipment.quantity}<button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)}>+</button> {equipment.name}</p>
