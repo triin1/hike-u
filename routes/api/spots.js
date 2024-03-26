@@ -4,7 +4,7 @@ const spotsController = require('../../controllers/api/spots');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // GET
-
+router.get('/', ensureLoggedIn, spotsController.index);
 
 // POST 
 router.post('/', ensureLoggedIn, spotsController.createSpot);
