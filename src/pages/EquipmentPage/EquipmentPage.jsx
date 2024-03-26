@@ -34,19 +34,31 @@ function EquipmentPage() {
     }, []);
 
     return (
-        <div className="equipment-container">
-            <h1 className="item-a">Manage your equipment</h1>
-            <div className="item-b">
-                <EquipmentForm addEquipment={addEquipment}/>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <h1>Manage your equipment</h1>
+                </div>
             </div>
-            <div>
-                <BuyEquipment />
+
+            <div className="row">
+                <div className="col-md-5">
+                    <EquipmentForm addEquipment={addEquipment}/>
+                </div>
+                <div className="col-md-7">
+                    <h4>List of your equipment</h4>
+                    <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
+                    <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={ filtered } setEquipmentItems={ setEquipmentItems }/>
+                </div>
             </div>
-            <div className="item-c">
-                <h4>List of your equipment</h4>
-                <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
-                <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={ filtered } setEquipmentItems={ setEquipmentItems }/>
+            
+            <div className="row">
+                <div className="col-md-5">
+                    <BuyEquipment />
+                </div>
+                <div className="col-md-7"></div>
             </div>
+
         </div>
     )
 };

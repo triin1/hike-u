@@ -14,6 +14,9 @@ function HikeDate({ updateHikeState}) {
         }
     ]);
 
+    useEffect(() => {
+        updateHikeState({startDate: date[0].startDate, endDate: date[0].endDate})
+    }, [date[0].startDate, date[0].endDate])
 
     return (
         <div>

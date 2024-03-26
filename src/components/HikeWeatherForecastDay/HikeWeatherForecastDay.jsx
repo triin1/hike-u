@@ -5,7 +5,7 @@ function HikeWeatherForecastDay({ date, weather, temp }) {
                 <div className="fw-bold">{date}</div>
                 {weather}
             </div>
-            <span className="badge text-bg-primary rounded-pill">{temp}</span>
+            <span className="badge text-bg-primary rounded-pill">{temp}℃</span>
         </li>
     )
 }
