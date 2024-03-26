@@ -71,13 +71,16 @@ export default function JournalList({ journalList, handleDelete }) {
           </div>
 
           {/* display descending order */}
-          <button
-            onClick={() => {
-              setReverse(!reverse);
-            }}
-          >
-            Display descending order
-          </button>
+          <div className="d-flex justify-content-end">
+            <button
+              className="btn btn-light "
+              onClick={() => {
+                setReverse(!reverse);
+              }}
+            >
+              Ascend ▲
+            </button>
+          </div>
 
           {/* card display */}
           <div className="row row-cols-lg-1 row-cols-md-1 row-cols-sm-2 g-4 justify-content-center">
