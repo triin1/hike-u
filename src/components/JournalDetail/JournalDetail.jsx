@@ -22,16 +22,17 @@ export default function JournalDetail({ journalDetail }) {
               <p className="card-text text-center">
                 <small className="text-muted">
                   By {journalDetail.user?.name} |{" "}
-                  {new Date(journalDetail.date).toDateString()} | Difficulty:{" "}
+                  {new Date(journalDetail.date).toDateString()} |{" "}
                   {journalDetail.difficulty}
                 </small>
+                <button type="button" class="btn btn-link btn-sm">
+                  <Link to={`/journals/${id}/edit`}>Edit</Link>
+                </button>
               </p>
 
               <p className="card-text">{journalDetail.content}</p>
             </div>
           </div>
-
-          <Link to={`/journals/${id}/edit`}>Edit Journal</Link>
         </div>
       </div>
     </div>

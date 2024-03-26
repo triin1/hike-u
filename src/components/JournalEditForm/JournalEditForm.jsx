@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function JournalEditForm({
   fetchedJournal,
   handleUpdateJournal,
@@ -9,6 +12,11 @@ export default function JournalEditForm({
     event.preventDefault();
     try {
       await handleUpdateJournal(editJournal);
+
+      toast.success("Success Notification !", {
+        position: "top-center",
+      });
+
       console.log("Journal updated successfully!");
     } catch (error) {
       console.error("Error updating journal:", error);

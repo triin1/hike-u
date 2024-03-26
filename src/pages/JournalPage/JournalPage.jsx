@@ -36,24 +36,23 @@ export default function JournalPage() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
-      try {
-        async function fetchSearchedResult() {
-          const journals = await getJournal(searchTermFromUrl);
-          setJournalList(journals);
-        }
-        fetchSearchedResult();
-        console.log("get search results");
-      } catch (err) {
-        console.log("find searched journal", err);
+
+    try {
+      async function fetchSearchedResult() {
+        const journals = await getJournal(searchTermFromUrl);
+        setJournalList(journals);
       }
+      fetchSearchedResult();
+      console.log("get search results");
+    } catch (err) {
+      console.log("find searched journal", err);
     }
   }, [location.search]);
 
   return (
     <div className="container-fluid">
       <div className="row">
-        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main className="col-md-9 ms-sm-auto col-lg-12 px-md-4">
           {/* going to create journal form page !!! */}
           <Link to="/journals/new">
             <button>Create Journal</button>

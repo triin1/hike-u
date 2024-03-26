@@ -27,13 +27,15 @@ function HikePage() {
         setHike(newHike)
     }
 
-    
+    const getHike = () => {
+        return hike;
+    }
 
     return (
         <div>
             <HikeMap updateHikeState = {updateHikeState} />
             <HikeDescription updateHikeState = {updateHikeState} />
-            <HikeWeather updateHikeState = {updateHikeState} />
+            <HikeWeather updateHikeState = {updateHikeState} hike = {hike} />
             <HikeStopsList />
             <HikeDetails />
         </div>
