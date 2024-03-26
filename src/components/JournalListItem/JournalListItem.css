@@ -1,0 +1,12 @@
+.content-title {
+  font-family: "Lora", serif;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  border: none;
+  background-color: transparent;
+}

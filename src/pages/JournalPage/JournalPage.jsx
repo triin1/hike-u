@@ -52,7 +52,7 @@ export default function JournalPage() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <main className="col-md-9 ms-sm-auto col-lg-12 px-md-4">
           {/* going to create journal form page !!! */}
           <Link to="/journals/new">
             <button>Create Journal</button>

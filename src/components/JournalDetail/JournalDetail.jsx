@@ -25,13 +25,14 @@ export default function JournalDetail({ journalDetail }) {
                   {new Date(journalDetail.date).toDateString()} | Difficulty:{" "}
                   {journalDetail.difficulty}
                 </small>
+                <span>
+                  <Link to={`/journals/${id}/edit`}>Edit</Link>
+                </span>
               </p>
 
               <p className="card-text">{journalDetail.content}</p>
             </div>
           </div>
-
-          <Link to={`/journals/${id}/edit`}>Edit Journal</Link>
         </div>
       </div>
     </div>
