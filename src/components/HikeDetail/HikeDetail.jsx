@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import * as hikeAPI from "../../utilities/hikes-api"
 import { useEffect, useState, useRef } from "react"
 import mapboxgl from "mapbox-gl"
+import "./HikeDetail.css"
 import 'mapbox-gl/dist/mapbox-gl.css';
 import "@mapbox/mapbox-gl-directions/src/mapbox-gl-directions.css"
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
@@ -10,16 +11,11 @@ import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-d
 function HikeDetail() {
     const { id } = useParams()
     const [detail, setDetail] = useState({})
-
     const mapContainer = useRef(null);
     const map = useRef(null);
     const directions = useRef(null);
-
     const originLocation = useRef(null);
-    const routeDistance = useRef(null);
     const destinationLocation = useRef(null);
-    const [initialLongtitude, setInitialLongtitude] = useState(151.216454);
-    const [initialLatitude, setInitialLatitude] = useState(-33.854816);
     const [zoom, setZoom] = useState(9);
 
     useEffect(() => {
@@ -53,7 +49,12 @@ function HikeDetail() {
     return (
         <div>
             <h2>{detail.title}</h2>
-            <div ref={mapContainer} className="map-container" />
+            <div className="map-container" >
+                <div ref={mapContainer} className="map-container" />
+            </div>
+            <div>{detail.description}</div>
+            <div>Start Date: {detail.startDate.toString().slice(0, 10)}</div>
+            <div>End Date: {detail.endDate.toString().slice(0, 10)}</div>
         </div>
     )
 }
