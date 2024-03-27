@@ -46,6 +46,7 @@ function HikePage() {
         getWeatherForecast()
     }, [hike.startLocation, hike.endLocation])
 
+    // used to save plan
     const getHikeState = () => {
         return hike
     }

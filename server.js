@@ -31,6 +31,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/journals", require("./routes/api/journals"));
 app.use("/api/equipment", require("./routes/api/equipment"));
 app.use("/api/hikes/spots", require("./routes/api/spots"));
+app.use("/api/hikes/hike", require("./routes/api/hikes"))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
