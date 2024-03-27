@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react"
 import mapboxgl from "mapbox-gl"
 import "./HikeDetail.css"
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { Link } from "react-router-dom"
 import { getWeather } from "../../utilities/weather-api";
 import "@mapbox/mapbox-gl-directions/src/mapbox-gl-directions.css"
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
@@ -75,10 +76,10 @@ function HikeDetail() {
                 {detail.spots && <div> <div className="list-title" >Your Spots:</div> <ul className="list-group list-group-flush" >{detail.spots.map((spot, index) => <li className="list-group-item" key={index} >{spot}</li>)}</ul></div>}
                 {detail.equipments && <div> <div className="list-title" >Your Equipments:</div> <ul className="list-group list-group-flush" >{detail.equipments.map((equipment, index) => <li className="list-group-item" key={index} >{equipment}</li>)}</ul></div>}
             </div>
-
+            <div className="btn-container" >
+                <Link to="/journals/new"><button className="create-btn" >Create Journal</button></Link>
+            </div>
         </div>
-
-
     )
 }
 
