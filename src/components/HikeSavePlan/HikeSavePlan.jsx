@@ -6,6 +6,8 @@ function HikeSavePlan({ getHikeState }) {
     const hike = getHikeState()
     if (hike.startLocation && hike.endLocation && hike.startDate && hike.endDate && hike.title !== "" ) {
       hikeAPI.saveHikePlan(getHikeState());
+    } else {
+      alert("Please fulfill the empty area")
     }
     
     ///api/hikes/hike start with
