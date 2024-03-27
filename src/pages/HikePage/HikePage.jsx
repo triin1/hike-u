@@ -20,7 +20,8 @@ function HikePage() {
         description: "",
         startDate: null,
         endDate: null,
-        equipments: []
+        equipments: [],
+        spots: []
     });
 
     const [forecast, setForecast] = useState(null)
@@ -51,7 +52,7 @@ function HikePage() {
             </div>
             <HikeDescription updateHikeState={updateHikeState} />
             <HikeDate updateHikeState={updateHikeState} hike={hike} />
-            <HikeStopsList />
+            <HikeStopsList updateHikeState={updateHikeState} />
             <HikeDetails />
             <button>Save Hike Plan</button>
         </div>
