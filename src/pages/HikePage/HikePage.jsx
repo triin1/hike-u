@@ -54,17 +54,6 @@ function HikePage() {
   };
 
   return (
-    // <div>
-    //     <div className="d-flex flex-row" >
-    //         <HikeMap updateHikeState={updateHikeState} />
-    //         <HikeWeatherForecast forecast={forecast} />
-    //     </div>
-    //     <HikeDescription updateHikeState={updateHikeState} />
-    //     <HikeDate updateHikeState={updateHikeState} />
-    //     <HikeStopsList hike={hike} setHike={setHike} />
-    //     <HikeEquipment updateHikeState={updateHikeState} />
-    //     <HikeSavePlan getHikeState={getHikeState} />
-    // </div>
     <div className="container-fluid">
       <div className="row">
         <main className="col-md-12 ms-sm-auto col-lg-12 px-md-4">
