@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./HomePageCard.css";
 import image1 from "../../images/bg 1.png";
 import image2 from "../../images/bg 2.png";
@@ -12,7 +13,7 @@ import image9 from "../../images/bg 9.png";
 import image10 from "../../images/bg 10.png";
 import image11 from "../../images/bg 11.png";
 
-function HomePageCard({ title, description, startDate, index }) {
+function HomePageCard({ title, description, startDate, index, id }) {
     const [topImage, setTopImage] = useState(false);
     const [imageURL, setImageURL] = useState(null);
 
@@ -35,23 +36,28 @@ function HomePageCard({ title, description, startDate, index }) {
     return (
         <div className="col">
             {topImage ? (
-                <div className="card h-100">
-                    <img src={imageURL} className="card-img-top" alt="" />
-                    <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <small>Start on: {startDate}</small>
-                        <p className="card-text">{description}</p>
+                <Link to={`/hikes/hike/${id}`} >
+                    <div className="card h-100">
+                        <img src={imageURL} className="card-img-top" alt="" />
+                        <div className="card-body">
+                            <h5 className="card-title">{title}</h5>
+                            <small>Start on: {startDate}</small>
+                            <p className="card-text">{description}</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
+
             ) : (
-                <div className="card h-100">
-                    <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <small>Start on: {startDate}</small>
-                        <p className="card-text">{description}</p>
+                <Link to={`/hikes/hike/${id}`}>
+                    <div className="card h-100">
+                        <div className="card-body">
+                            <h5 className="card-title">{title}</h5>
+                            <small>Start on: {startDate}</small>
+                            <p className="card-text">{description}</p>
+                        </div>
+                        <img src={imageURL} className="card-img-top" alt="" />
                     </div>
-                    <img src={imageURL} className="card-img-top" alt="" />
-                </div>
+                </Link>
             )}
         </div>
     );
