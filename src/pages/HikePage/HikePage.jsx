@@ -6,6 +6,7 @@ import HikeDate from "../../components/HikeDate/HikeDate";
 import HikeEquipment from "../../components/HikeEquipment/HikeEquipment";
 import HikeWeatherForecast from "../../components/HikeWeatherForecast/HikeWeatherForecast";
 import { getWeather } from "../../utilities/weather-api";
+import HikeSavePlan from "../../components/HikeSavePlan/HikeSavePlan";
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
@@ -34,15 +35,6 @@ function HikePage() {
         })
     }
 
-    // const updateHikeState = (newValue) => {
-    //     console.log(hike)
-    //     const hikeCopy = { ...hike }
-    //     const newHike = { ...hikeCopy, ...newValue }
-    //     setHike(newHike)
-    // }
-
-
-
     // used to fetch the weather forecast
     useEffect(() => {
         async function getWeatherForecast() {
@@ -54,6 +46,10 @@ function HikePage() {
         getWeatherForecast()
     }, [hike.startLocation, hike.endLocation])
 
+    const getHikeState = () => {
+        return hike
+    }
+
     return (
         <div>
             <div className="d-flex flex-row" >
@@ -61,10 +57,11 @@ function HikePage() {
                 <HikeWeatherForecast forecast={forecast} />
             </div>
             <HikeDescription updateHikeState={updateHikeState} />
-            <HikeDate updateHikeState={updateHikeState} hike={hike} />
+            <HikeDate updateHikeState={updateHikeState} />
             <HikeStopsList />
             <HikeEquipment updateHikeState={updateHikeState} />
-            <button>Save Hike Plan</button>
+            <HikeSavePlan getHikeState = {getHikeState} />
+            
         </div>
     )
 }
