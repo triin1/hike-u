@@ -12,7 +12,7 @@ function HikeSavePlan({ getHikeState }) {
   };
 
   return (
-    <button className="btn btn-success" onClick={_handleSaveHikePlan}>
+    <button className="btn btn-success btn-save" onClick={_handleSaveHikePlan}>
       <a className="savehike" href="/">
         Save Hike Plan
       </a>

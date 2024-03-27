@@ -56,10 +56,10 @@ function HomePageCard({ title, description, startDate, index, id }) {
                     <div className="card h-100 card-home">
                         <div className="card-body">
                             <h5 className="card-title card-title-home">{title}</h5>
-                            <small>Start on: {startDate}</small>
-                            <p className="card-text">{description}</p>
+                            <small className="small-home" >Start on: {startDate}</small>
+                            <p className="card-text p-home">{description}</p>
                         </div>
-                        <img src={imageURL} className="card-img-top" alt="" />
+                        <img src={imageURL} className="card-img-top card-image-top-home " alt="" />
                     </div>
                 </Link>
             )}

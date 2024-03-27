@@ -1,4 +1,4 @@
-.card-img-top {
+.card-img-top-home {
     width: auto;
     height: auto;
 }
@@ -24,11 +24,11 @@
     font-size: 40px;
 }
 
-small {
+.small-home {
     font-weight: bolder;
 } 
 
-p {
+.p-home {
     margin-top: 10px;
     font-size: 22px;
 }
