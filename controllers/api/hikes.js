@@ -41,8 +41,13 @@ async function index(req, res) {
     }
 }
 
+async function show(req, res) {
+
+}
+
 module.exports = {
     create,
-    index
+    index,
+    show
 }
 

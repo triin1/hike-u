@@ -17,8 +17,13 @@ function HomePageCard({ title, description, startDate, index, id }) {
     const [topImage, setTopImage] = useState(false);
     const [imageURL, setImageURL] = useState(null);
 
-    function isEven(number) {
-        return number % 2 === 0;
+    function patternCheck(number) {
+        const mappedNumber = number % 9;
+        if ((mappedNumber >= 0 && mappedNumber <= 2) || (mappedNumber >= 6 && mappedNumber <= 8)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function getImageIndex(number) {
@@ -27,16 +32,15 @@ function HomePageCard({ title, description, startDate, index, id }) {
     }
 
     useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * 11);
-        const even = isEven(randomIndex);
+        const even = patternCheck(index);
         setTopImage(even);
-        setImageURL(getImageIndex(randomIndex));
+        setImageURL(getImageIndex(index));
     }, []);
 
     return (
         <div className="col">
             {topImage ? (
-                <Link to={`/hikes/hike/${id}`} >
+                <Link to={`/hikes/hike/${id}` } >
                     <div className="card h-100">
                         <img src={imageURL} className="card-img-top" alt="" />
                         <div className="card-body">
