@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
 import "./NavBar.css";
 import React, { useState } from "react";
+import myImage from "../../images/hikeU.png"; // Import the image
 
 const NavBar = ({ user, setUser }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,11 +24,7 @@ const NavBar = ({ user, setUser }) => {
         href="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
       >
-        <img
-          src="./images/hikeU.png"
-          alt="Hike-u logo"
-          className="hikeu img-fluid"
-        />
+        <img src={myImage} alt="Hike-u logo" className="hikeu img-fluid" />
         {/* <span className="fs-2 fw-bold">Hike-U</span> */}
       </a>
       <hr />
