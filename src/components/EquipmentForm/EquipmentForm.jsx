@@ -51,7 +51,7 @@ function EquipmentForm({ addEquipment }) {
     return (
         <div className="container">
             <div className="row">
-                <h4 className="ps-5">Add new items</h4>
+                <h4 className="ps-5 pt-3 equipment-title">Add new items</h4>
             </div>
             
             <form onSubmit={_handleAddNewEquipment} className="ps-5">

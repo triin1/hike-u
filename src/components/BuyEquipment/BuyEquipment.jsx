@@ -1,5 +1,4 @@
 import "./BuyEquipment.css"
-// import image from "./EquipmentPage - Unsplash.jpg"
 
 export default function BuyEquipment() {
     return (
