@@ -10,7 +10,7 @@ import HikeSavePlan from "../../components/HikeSavePlan/HikeSavePlan";
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
-    
+
     // state probably needs to be passed as props to HikeMap page
     // then to other children from there
     const [hike, setHike] = useState({
@@ -22,7 +22,7 @@ function HikePage() {
         startDate: null,
         endDate: null,
         equipments: [],
-        spots:[]
+        spots: []
     });
 
     const [forecast, setForecast] = useState(null)
@@ -30,7 +30,7 @@ function HikePage() {
     // Used to update the hike state, the newValue must be an object
     const updateHikeState = (newValue) => {
         setHike((previousState) => {
-            const newHike = {...previousState, ...newValue};
+            const newHike = { ...previousState, ...newValue };
             return newHike
         })
     }
@@ -61,7 +61,7 @@ function HikePage() {
             <HikeDate updateHikeState={updateHikeState} />
             <HikeStopsList />
             <HikeEquipment updateHikeState={updateHikeState} />
-            <HikeSavePlan getHikeState = {getHikeState} />
+            <HikeSavePlan getHikeState={getHikeState} />
         </div>
     )
 }

@@ -18,11 +18,11 @@ export default function HikeStopsList({updateHikeState}) {
         }
     };
 
-    useEffect(() => {
-        spotsAPI.getSpots().then((stops) => {
-            setStops(stops);
-        });
-    }, []);
+    // useEffect(() => {
+    //     spotsAPI.getSpots().then((stops) => {
+    //         setStops(stops);
+    //     });
+    // }, []);
 
     const hikeStopItems = stops.map((stop, index) => (
         <HikeStopItem stop={stop} key={index} index={index}/>
