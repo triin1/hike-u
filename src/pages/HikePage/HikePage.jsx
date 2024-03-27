@@ -77,8 +77,13 @@ function HikePage() {
               {/* right side */}
               <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
                 {/* stops */}
+
                 <HikeStopsList hike={hike} setHike={setHike} />
-                <HikeEquipment updateHikeState={updateHikeState} />
+
+                <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+                  <HikeEquipment updateHikeState={updateHikeState} />
+                </div>
+
                 <HikeSavePlan getHikeState={getHikeState} />
               </div>
             </div>

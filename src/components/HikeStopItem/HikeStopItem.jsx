@@ -1,8 +1,3 @@
 export default function HikeStopItem({ stop }) {
-
-    console.log({stop});
-
-    return (
-        <li>{ stop }</li>
-    )
+  return <li className="list-group-item">{stop}</li>;
 }
