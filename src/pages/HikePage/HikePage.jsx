@@ -9,7 +9,7 @@ import { getWeather } from "../../utilities/weather-api";
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
-
+    
     // state probably needs to be passed as props to HikeMap page
     // then to other children from there
     const [hike, setHike] = useState({
@@ -28,10 +28,20 @@ function HikePage() {
 
     // Used to update the hike state, the newValue must be an object
     const updateHikeState = (newValue) => {
-        const hikeCopy = { ...hike }
-        const newHike = { ...hikeCopy, ...newValue }
-        setHike(newHike)
+        setHike((previousState) => {
+            const newHike = {...previousState, ...newValue};
+            return newHike
+        })
     }
+
+    // const updateHikeState = (newValue) => {
+    //     console.log(hike)
+    //     const hikeCopy = { ...hike }
+    //     const newHike = { ...hikeCopy, ...newValue }
+    //     setHike(newHike)
+    // }
+
+
 
     // used to fetch the weather forecast
     useEffect(() => {
