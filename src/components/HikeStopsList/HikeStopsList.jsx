@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { useState, useEffect } from "react";
-=======
-import { useEffect, useState } from "react";
->>>>>>> 68c7bc631c0db588d1189c1e0019885b16e4bdc8
+import { useState } from "react";
 import HikeStopsForm from "../HikeStopsForm/HikeStopsForm";
 import HikeStopItem from "../HikeStopItem/HikeStopItem";
 // import * as spotsAPI from "../../utilities/hikes-api";
