@@ -59,7 +59,7 @@ function HikePage() {
             </div>
             <HikeDescription updateHikeState={updateHikeState} />
             <HikeDate updateHikeState={updateHikeState} />
-            <HikeStopsList />
+            <HikeStopsList hike={hike} setHike={setHike} />
             <HikeEquipment updateHikeState={updateHikeState} />
             <HikeSavePlan getHikeState={getHikeState} />
         </div>

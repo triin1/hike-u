@@ -1,14 +1,15 @@
 import { useState } from "react";
 import './HikeStopsForm.css';
 
-export default function HikeStopsForm({ addNewStop, stops, setStops }) {
+export default function HikeStopsForm({ addNewStop, stops, setStops, hike, setHike }) {
 
     const [newStop, setNewStop] = useState('');
 
     function _handleNewStop(event) {
         event.preventDefault();
         // addNewStop(newStop);
-        setStops([...stops, newStop])
+        setHike({...hike, spots: [...stops, newStop]});
+        setStops([...stops, newStop]);
         console.log(newStop);
         setNewStop('');
     };
