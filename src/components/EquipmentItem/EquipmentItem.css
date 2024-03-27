@@ -1,61 +1,25 @@
-.cat-container {
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    margin: 0 40px;
-}
-
-.item-name {
-    margin: 0 20px;
-}
-
 .cat-item {
-    padding: 0 10px
+    padding: 0 5px
 }
 
 .equipment-button {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
-    letter-spacing: 1px;
-    padding: 5px 10px 5px;
-    outline: 0;
+    padding: 0.3em 0.6em 0.3em;
     border: 1px solid black;
-    cursor: pointer;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  .equipment-button::after {
-    content: "";
     background-color: #A7C7E7;
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    height: 100%;
-    top: 7px;
-    left: 7px;
-    transition: 0.2s;
-  }
-  
-  .equipment-button:hover::after {
-    top: 0px;
-    left: 0px;
   }
 
   .equipment-button-delete {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: bold;
-    letter-spacing: 1px;
-    padding: 5px 10px 5px;
-    outline: 0;
+    padding: 0.3em 0.6em 0.3em;
     border: 1px solid black;
-    cursor: pointer;
-    position: relative;
     background-color: #A7C7E7;
   }
 
 .equipment-button-delete:hover + .hide {
-    display: inline;
+    display: inline-block;
     color: black;
 }
 

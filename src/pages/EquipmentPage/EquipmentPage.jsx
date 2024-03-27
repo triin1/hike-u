@@ -37,7 +37,8 @@ function EquipmentPage() {
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <h1>Manage your equipment</h1>
+                    <h1 className="fw-bold pt-5 ps-5 pb-3">Manage your equipment</h1>
+                    
                 </div>
             </div>
 
@@ -46,9 +47,11 @@ function EquipmentPage() {
                     <EquipmentForm addEquipment={addEquipment}/>
                 </div>
                 <div className="col-md-7">
-                    <h4>List of your equipment</h4>
-                    <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
-                    <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={ filtered } setEquipmentItems={ setEquipmentItems }/>
+                    <h4 className="ps-5 pt-3 equipment-title">List of your equipment</h4>
+                    <div className="ps-5">
+                        <EquipmentFilter setFiltered={setFiltered} equipmentItems={ equipmentItems } />
+                        <EquipmentList equipmentItems={ equipmentItems } deleteEquipment={ deleteEquipment } filtered={ filtered } setEquipmentItems={ setEquipmentItems }/>
+                    </div>
                 </div>
             </div>
             

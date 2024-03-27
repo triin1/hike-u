@@ -51,14 +51,14 @@ function EquipmentForm({ addEquipment }) {
     return (
         <div className="container">
             <div className="row">
-                <h4>Add new items</h4>
+                <h4 className="ps-5 pt-3 equipment-title">Add new items</h4>
             </div>
             
-            <form onSubmit={_handleAddNewEquipment}>
+            <form onSubmit={_handleAddNewEquipment} className="ps-5">
                 
                 <div className="row">
                     <div className="mb-3">
-                        <label className="form-label">Add equipment</label>
+                        <label className="form-label">Item name</label>
                         <input className="form-control"
                             name="name"
                             value={newEquipment.name}
@@ -238,14 +238,16 @@ function EquipmentForm({ addEquipment }) {
                         <label className="form-label"></label>
                         <textarea className="form-control"
                             name="response"
-                            value={category.response}
+                            value={category.response.join("   ")}
                             onChange={_handleCategoryChange}
                             placeholder="Your selected categories will appear here"
                         ></textarea>
                     </div>
 
                 </div>
-                <button type="submit" className="equipment-button">ADD EQUIPMENT</button>
+                <div className="button-center">
+                    <button type="submit" className="equipment-submit-button mt-2">ADD EQUIPMENT</button>
+                </div>
             </form>
         </div>
     );
