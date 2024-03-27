@@ -4,6 +4,7 @@ import HikeDetails from "../../components/HikeDetails/HikeDetails";
 import HikeMap from "../../components/HikeMap/HikeMap";
 import HikeDescription from "../../components/HikeDescription/HikeDescription";
 import HikeDate from "../../components/HikeDate/HikeDate";
+import HikeEquipment from "../../components/HikeEquipment/HikeEquipment";
 import HikeWeatherForecast from "../../components/HikeWeatherForecast/HikeWeatherForecast";
 import { getWeather } from "../../utilities/weather-api";
 import * as hikesAPI from "../../utilities/hikes-api";
@@ -20,7 +21,8 @@ function HikePage() {
         description: "",
         startDate: null,
         endDate: null,
-        equipments: []
+        equipments: [],
+        spots:[]
     });
 
     const [forecast, setForecast] = useState(null)
@@ -52,6 +54,7 @@ function HikePage() {
             <HikeDescription updateHikeState={updateHikeState} />
             <HikeDate updateHikeState={updateHikeState} hike={hike} />
             <HikeStopsList />
+            <HikeEquipment updateHikeState={updateHikeState} />
             <HikeDetails />
             <button>Save Hike Plan</button>
         </div>
