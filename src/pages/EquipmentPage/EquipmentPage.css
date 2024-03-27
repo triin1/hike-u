@@ -1,26 +1,5 @@
-.item-a {
-    grid-area: header;
-    text-align: center;
-}
-
-.item-b {
-    grid-area: main
-}
-
-.item-c {
-    grid-area: side
-}
-
-.item-d {
-    grid-area: side-bottom;
-}
-
-.equipment-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas:
-        "header header"
-        "main    side"
-        ".     side-bottom"
+.equipment-title {
+    font-family: "Lora", serif;
+    font-size: 45px;
+    font-weight: bold;
 }
