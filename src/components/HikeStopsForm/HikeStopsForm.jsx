@@ -15,7 +15,6 @@ export default function HikeStopsForm({
     // addNewStop(newStop);
     setHike({ ...hike, spots: [...stops, newStop] });
     setStops([...stops, newStop]);
-    console.log(newStop);
     setNewStop("");
   }
 

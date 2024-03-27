@@ -47,29 +47,38 @@ function HikeDetail() {
             map.current.addControl(directions.current, 'top-left');
             if (originLocation.current && destinationLocation.current) {
                 const weatherForecast = await getWeather(
-                originLocation.current,
-                  destinationLocation.current
+                    originLocation.current,
+                    destinationLocation.current
                 );
                 setForecast(weatherForecast);
-              }
+            }
         }
         getDetail()
     }, [])
 
     return (
         <div className="detail-container" >
-            <h2>{detail.title}</h2>
+            <div className="detail-title" >Your Hike: {detail.title}</div>
             <div className="map-weather-container" >
                 <div ref={mapContainer} className="map-container" />
-                <HikeWeatherForecast forecast={forecast} className="weather-container" />
+                <HikeWeatherForecast forecast={forecast} />
             </div>
-            <div> <div>Desctiption: </div> {detail.description}</div>
-            {detail.startDate && <div>Start Date: {detail.startDate.toString().slice(0, 10)}</div>}
-            {detail.endDate && <div>End Date: {detail.endDate.toString().slice(0, 10)}</div>}
-            {detail.spots &&  <div> <div>Your Spots:</div> <ul>{detail.spots.map((spot, index) => <li key={index} >{spot}</li> )}</ul></div> }
-            {detail.equipments &&  <div> <div>Your Equipment List:</div> <ul>{detail.equipments.map((equipment, index) => <li key={index} >{equipment}</li> )}</ul></div> }
+            <div className="date-container" >
+                {detail.startDate && <div>Start Date: {detail.startDate.toString().slice(0, 10)}</div>}
+                {detail.endDate && <div>End Date: {detail.endDate.toString().slice(0, 10)}</div>}
+            </div>
+            <div className="divider" ></div>
+            <div className="description" >Desctiption: </div>
+            <div className="description-container" >  {detail.description}</div>
+
+            <div className="list-container" >
+                {detail.spots && <div> <div className="list-title" >Your Spots:</div> <ul className="list-group list-group-flush" >{detail.spots.map((spot, index) => <li className="list-group-item" key={index} >{spot}</li>)}</ul></div>}
+                {detail.equipments && <div> <div className="list-title" >Your Equipments:</div> <ul className="list-group list-group-flush" >{detail.equipments.map((equipment, index) => <li className="list-group-item" key={index} >{equipment}</li>)}</ul></div>}
+            </div>
 
         </div>
+
+
     )
 }
 

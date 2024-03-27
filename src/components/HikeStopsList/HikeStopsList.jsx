@@ -13,7 +13,6 @@ export default function HikeStopsList({ hike, setHike }) {
       const addSpot = await hikesAPI.saveHikePlan(newSpot);
       setStops([...stops, addSpot]);
     } catch (err) {
-      console.log("stop not added", err);
     }
   }
 
@@ -33,11 +32,10 @@ export default function HikeStopsList({ hike, setHike }) {
     <HikeStopItem stop={stop} key={index} index={index} />
   ));
 
-  console.log(hikeStopItems);
 
   return (
     <div>
-      <h1>Stops</h1>
+      <h3>Stops</h3>
       <HikeStopsForm
         addNewStop={addNewStop}
         stops={stops}
@@ -45,7 +43,7 @@ export default function HikeStopsList({ hike, setHike }) {
         hike={hike}
         setHike={setHike}
       />
-      <ol class="list-group list-group-numbered">{hikeStopItems}</ol>
+      <ol className="list-group list-group-numbered">{hikeStopItems}</ol>
     </div>
   );
 }

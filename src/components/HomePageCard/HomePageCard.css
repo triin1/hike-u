@@ -2,3 +2,33 @@
     width: auto;
     height: auto;
 }
+
+.card {
+    border-radius: 0px;
+    border: 0.5px solid rgb(238, 238, 238);
+    transition: 0.2s
+}
+
+.card:hover {
+    background-color: rgb(154, 154, 255);
+    color: white;
+    scale: 0.98;
+}
+
+.card img {
+    border-radius: 0px;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+small {
+    font-weight: bolder;
+} 
+
+p {
+    margin-top: 10px;
+    font-size: 22px;
+}

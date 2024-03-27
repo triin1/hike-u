@@ -7,6 +7,7 @@ import HikeEquipment from "../../components/HikeEquipment/HikeEquipment";
 import HikeWeatherForecast from "../../components/HikeWeatherForecast/HikeWeatherForecast";
 import { getWeather } from "../../utilities/weather-api";
 import HikeSavePlan from "../../components/HikeSavePlan/HikeSavePlan";
+import "./HikePage.css"
 import * as hikesAPI from "../../utilities/hikes-api";
 
 function HikePage() {
@@ -60,17 +61,21 @@ function HikePage() {
           <div>
             <div className="row d-flex">
               {/* heading */}
-              <div className="col-xl-8 py-5 px-md-5">
+              <div className="col-xl-9 py-5 px-md-5">
                 <div className="row">
                   <h1 className="display-5 fw-bold">Start Adventure</h1>
                 </div>
 
                 {/* mapbox area */}
                 <div className="row row-cols-lg-1 row-cols-md-1 row-cols-sm-2 g-4 justify-content-center">
-                  <HikeMap updateHikeState={updateHikeState} />
+                    <div className="map-date-container" >
+                    <HikeMap updateHikeState={updateHikeState} />
+                    <HikeDate updateHikeState={updateHikeState} />
+                    </div>
+                  
                   <HikeWeatherForecast forecast={forecast} />
                   <HikeDescription updateHikeState={updateHikeState} />
-                  <HikeDate updateHikeState={updateHikeState} />
+                  
                 </div>
               </div>
 

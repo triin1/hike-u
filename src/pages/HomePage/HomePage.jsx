@@ -1,6 +1,7 @@
 import * as hikeAPI from "../../utilities/hikes-api";
 import { useEffect, useState } from "react";
 import HomePageCard from "../../components/HomePageCard/HomePageCard";
+import "./HomePage.css"
 
 export default function HomePage() {
 
@@ -18,8 +19,8 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>HomePage</h1>
-      <div className="row row-cols-1 row-cols-md-3 g-0">
+      <div className="homePage" >HomePage</div>
+      <div className="row row-cols-1 row-cols-md-3 g-0 cards ">
         {hikePlans.map((plan, index) => <HomePageCard title={plan.title} description={plan.description} startDate={plan.startDate.toString().slice(0, 10)} index={index} id={plan._id} key={index} />)}
       </div>
     </div>

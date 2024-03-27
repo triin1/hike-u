@@ -1,4 +1,5 @@
 import * as equipmentAPI from "../../utilities/equipment-api";
+import "./HikeEquipment.css"
 import { useEffect, useState } from "react";
 
 function HikeEquipment({ updateHikeState }) {
@@ -27,25 +28,24 @@ function HikeEquipment({ updateHikeState }) {
 
     return (
         <div>
-            <label>Select your equipment:</label>
+            <h3>Equipment:</h3>
             {equipmentOptions.length ?
-                <div>
-                    <select value={selectedEquipment} onChange={e => setSelectedEquipment(e.target.value)}>
+                <div className="equipment-select-add" >
+                    <select className="selections" value={selectedEquipment} onChange={e => setSelectedEquipment(e.target.value)}>
                         <option value="">Select Equipment</option>
                         {equipmentOptions.map((equipment, index) =>
                             <option key={index} value={equipment.name}>{equipment.name}</option>
                         )}
                     </select>
-                    <button onClick={_addEquipment}>Add equipment</button>
+                    <button className="add-btn" onClick={_addEquipment}>Add</button>
                 </div>
                 :
                 <span>No equipment yet</span>
             }
             <div>
-                <label>Selected Equipments:</label>
-                <ul>
+                <ul className="list-group equipments" >
                     {equipments.map((equipment, index) => (
-                        <li key={index}>{equipment}</li>
+                        <li className="list-unstyled" key={index}>{equipment}</li>
                     ))}
                 </ul>
             </div>
