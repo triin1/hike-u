@@ -24,6 +24,7 @@ async function create(req, res) {
             spots,
             user: user._id
         })
+        res.status(200)
     } catch (err) {
         res.status(400).json(`Creating Hike error on database: ${err}`)
     }
