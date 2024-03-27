@@ -3,23 +3,23 @@
     height: auto;
 }
 
-.card {
+.card-home {
     border-radius: 0px;
     border: 0.5px solid rgb(238, 238, 238);
     transition: 0.2s
 }
 
-.card:hover {
+.card-home:hover {
     background-color: rgb(154, 154, 255);
     color: white;
     scale: 0.98;
 }
 
-.card img {
+.card-home img {
     border-radius: 0px;
 }
 
-.card-title {
+.card-title-home {
     font-weight: bold;
     font-size: 40px;
 }

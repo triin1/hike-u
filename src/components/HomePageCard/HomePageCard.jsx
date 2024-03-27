@@ -41,10 +41,10 @@ function HomePageCard({ title, description, startDate, index, id }) {
         <div className="col">
             {topImage ? (
                 <Link to={`/hikes/hike/${id}` } >
-                    <div className="card h-100">
+                    <div className="card h-100 card-home">
                         <img src={imageURL} className="card-img-top" alt="" />
                         <div className="card-body">
-                            <h5 className="card-title">{title}</h5>
+                            <h5 className="card-title card-title-home">{title}</h5>
                             <small>Start on: {startDate}</small>
                             <p className="card-text">{description}</p>
                         </div>
@@ -53,9 +53,9 @@ function HomePageCard({ title, description, startDate, index, id }) {
 
             ) : (
                 <Link to={`/hikes/hike/${id}`}>
-                    <div className="card h-100">
+                    <div className="card h-100 card-home">
                         <div className="card-body">
-                            <h5 className="card-title">{title}</h5>
+                            <h5 className="card-title card-title-home">{title}</h5>
                             <small>Start on: {startDate}</small>
                             <p className="card-text">{description}</p>
                         </div>
