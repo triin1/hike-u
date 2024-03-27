@@ -3,7 +3,11 @@ import "./HikeSavePlan.css";
 
 function HikeSavePlan({ getHikeState }) {
   const _handleSaveHikePlan = () => {
-    hikeAPI.saveHikePlan(getHikeState());
+    const hike = getHikeState()
+    if (hike.startLocation && hike.endLocation && hike.startDate && hike.endDate && hike.title !== "" ) {
+      hikeAPI.saveHikePlan(getHikeState());
+    }
+    
     ///api/hikes/hike start with
   };
 
