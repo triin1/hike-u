@@ -9,16 +9,19 @@ export default function HomePage() {
   useEffect(() => {
     async function getPlans() {
       const plans = await hikeAPI.getAllHikePlan()
+      console.log(plans)
       setHikePlans(plans)
     }
     getPlans()
   }, [])
 
+  //{hikePlans.map((plan, index) => <HomePageCard title = {plan.title} description = {plan.description} startDate = {plan.startDate.toString().slice(0, 10)} index = {index} key={index} /> )}
+
   return (
     <div>
       <h1>HomePage</h1>
-      <div className="card-group">
-        
+      <div className="row row-cols-1 row-cols-md-3 g-0">
+        {hikePlans.map((plan, index) => <HomePageCard title={plan.title} description={plan.description} startDate={plan.startDate.toString().slice(0, 10)} index={index} key={index} />)}
       </div>
     </div>
   );
