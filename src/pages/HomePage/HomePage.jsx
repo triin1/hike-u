@@ -15,7 +15,6 @@ export default function HomePage() {
     getPlans()
   }, [])
 
-  //{hikePlans.map((plan, index) => <HomePageCard title = {plan.title} description = {plan.description} startDate = {plan.startDate.toString().slice(0, 10)} index = {index} key={index} /> )}
 
   return (
     <div>
