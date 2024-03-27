@@ -42,7 +42,13 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-
+    try {
+        const id = req.params.id
+        const hikes = await Hike.findById(id)
+        res.status(200).json(hikes)
+    } catch (err) {
+        res.status(400).json(`Get hike index detail on database: ${err}`)
+    }
 }
 
 module.exports = {

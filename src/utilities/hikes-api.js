@@ -18,3 +18,7 @@ export async function saveHikePlan(hikeData) {
 export async function getAllHikePlan() {
     return sendRequest(`${BASE_URL}/hike/index`, "GET")
 }
+
+export async function getHikeDetail(id) {
+    return sendRequest(`${BASE_URL}/hike/${id}`, "GET")
+}
