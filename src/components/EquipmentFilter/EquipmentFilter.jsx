@@ -6,15 +6,17 @@ function EquipmentFilter( { setFiltered, equipmentItems }) {
     let listOfCategoriesArray = Array.from(listOfCategories);
 
     return (
-        <label>Select your list view:
-            <select onChange={(e) => setFiltered(e.target.value)}>
-                <option></option>
-                <option>All</option>
-                {listOfCategoriesArray.map((cat, index) =>
-                <option key={index}>{cat}</option>
-            )}
-            </select>
-        </label>
+        <div className="mt-2">
+            <label className="form-label">Select your list view:
+                <select onChange={(e) => setFiltered(e.target.value)} className="form-select mt-2 mb-4">
+                    <option></option>
+                    <option>All</option>
+                    {listOfCategoriesArray.map((cat, index) =>
+                    <option key={index}>{cat}</option>
+                )}
+                </select>
+            </label>
+        </div>
     )
 
 };
