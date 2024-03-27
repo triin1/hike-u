@@ -44,7 +44,7 @@ const hikeSchema = new Schema({
     journal: {
         type: Schema.Types.ObjectId
     },
-    spots: [spotSchema],
+    spots: [String],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
