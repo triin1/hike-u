@@ -28,6 +28,7 @@ export default function JournalList({ journalList, handleDelete }) {
     // Return whether the current index is equal to the first index
     return index === firstIndex;
   });
+
   function handleDateSelect(index) {
     const selectedMonthYear = uniqueMonthYear[index];
     if (

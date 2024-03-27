@@ -11,9 +11,10 @@ export async function createSpot(spotData) {
 // }
 
 export async function saveHikePlan(hikeData) {
+    console.log(hikeData);
     return sendRequest(`${BASE_URL}/hike/save`, "POST", hikeData)
 }
 
 export async function getAllHikePlan() {
-    
+    return sendRequest(`${BASE_URL}/hike/index`, "GET")
 }
