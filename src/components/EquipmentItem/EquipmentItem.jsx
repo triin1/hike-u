@@ -20,15 +20,18 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
         <div className="container"> 
             <div className="row">
                 <div className="col-md-1">
-                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)} className="equipment-button" role="button">-</button>
+                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)} className="equipment-button" role="button">
+                        <span>&#8722;</span>
+                    </button>
                 </div>
                 <div className="col-md-1">
-                    <div className="">
+                    <div className="equip-q">
                         {equipment.quantity}
                     </div>
                 </div>
                 <div className="col-md-1">
-                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)} className="equipment-button" role="button">+
+                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)} className="equipment-button" role="button">
+                        <span>&#43;</span>
                     </button>
                 </div>
                 <div className="col-md-2">

@@ -25,3 +25,13 @@
     color: white;
     text-decoration: underline;
 }
+
+.equipment-background {
+    background-image: url("./EquipmentPageUnsplash.jpg"); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 50px
+}

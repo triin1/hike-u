@@ -1,16 +1,19 @@
-.equipment-button {
+.button-center {
+    display: flex;
+    justify-content: center;
+}
+
+.equipment-submit-button {
     font-size: 20px;
     font-weight: bold;
-    letter-spacing: 1px;
-    padding: 5px 10px 5px;
-    outline: 0;
+    padding: 5px 30px 5px;
     border: 1px solid black;
     cursor: pointer;
     position: relative;
     background-color: rgba(0, 0, 0, 0);
   }
   
-  .equipment-button::after {
+  .equipment-submit-button::after {
     content: "";
     background-color: #A7C7E7;
     width: 100%;
@@ -22,7 +25,7 @@
     transition: 0.2s;
   }
   
-  .equipment-button:hover::after {
+  .equipment-submit-button:hover::after {
     top: 0px;
     left: 0px;
   }
