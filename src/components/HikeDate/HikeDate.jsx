@@ -22,7 +22,7 @@ function HikeDate({ updateHikeState}) {
     return (
         <div>
             <div className="mb-3">
-                <label className="form-label form-label-date">Select date</label>
+                <label className="form-label form-label-date form-label-date">Select date</label>
                 <div>
                     <DateRange
                         editableDateInputs={true}
