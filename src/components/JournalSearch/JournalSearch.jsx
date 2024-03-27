@@ -9,11 +9,13 @@ export default function JournalSearch() {
 
   function handleSearchSubmit(event) {
     event.preventDefault();
+    //construct and manipulate the query string of a URL
     const urlParams = new URLSearchParams();
+    //sets a query parameterb"?" named "searchTerm" to "searchTerm" variable
     urlParams.set("searchTerm", searchTerm);
-
+    //?searchTerm=<value>
     const searchQuery = urlParams.toString();
-    //App->Route
+    //App->journals-api->Route
     navigate(`/journal?${searchQuery}`);
   }
 

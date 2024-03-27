@@ -10,7 +10,7 @@ export default function Newsletter() {
       >
         <div className="overlay"></div>
         <h3 className="mb-4 sidebar-heading">Newsletter</h3>
-        <p className="mb-4">
+        <p className="mb-4 text-white">
           Far far away, behind the word mountains, far from the countries
           Vokalia
         </p>
