@@ -54,17 +54,6 @@ function HikePage() {
   };
 
   return (
-    // <div>
-    //     <div className="d-flex flex-row" >
-    //         <HikeMap updateHikeState={updateHikeState} />
-    //         <HikeWeatherForecast forecast={forecast} />
-    //     </div>
-    //     <HikeDescription updateHikeState={updateHikeState} />
-    //     <HikeDate updateHikeState={updateHikeState} />
-    //     <HikeStopsList hike={hike} setHike={setHike} />
-    //     <HikeEquipment updateHikeState={updateHikeState} />
-    //     <HikeSavePlan getHikeState={getHikeState} />
-    // </div>
     <div className="container-fluid">
       <div className="row">
         <main className="col-md-12 ms-sm-auto col-lg-12 px-md-4">
@@ -88,8 +77,13 @@ function HikePage() {
               {/* right side */}
               <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
                 {/* stops */}
+
                 <HikeStopsList hike={hike} setHike={setHike} />
-                <HikeEquipment updateHikeState={updateHikeState} />
+
+                <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+                  <HikeEquipment updateHikeState={updateHikeState} />
+                </div>
+
                 <HikeSavePlan getHikeState={getHikeState} />
               </div>
             </div>
