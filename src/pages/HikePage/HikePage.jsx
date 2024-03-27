@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import HikeStopsList from "../../components/HikeStopsList/HikeStopsList";
-import HikeDetails from "../../components/HikeDetails/HikeDetails";
 import HikeMap from "../../components/HikeMap/HikeMap";
 import HikeDescription from "../../components/HikeDescription/HikeDescription";
 import HikeDate from "../../components/HikeDate/HikeDate";
@@ -55,7 +54,6 @@ function HikePage() {
             <HikeDate updateHikeState={updateHikeState} hike={hike} />
             <HikeStopsList />
             <HikeEquipment updateHikeState={updateHikeState} />
-            <HikeDetails />
             <button>Save Hike Plan</button>
         </div>
     )
