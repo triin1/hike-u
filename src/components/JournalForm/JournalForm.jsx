@@ -106,9 +106,9 @@ export default function JournalForm({ addJournal }) {
                     }
                   >
                     <option value="">Select Hiking Difficulty</option>
-                    <option value="easy">Easy Level</option>
-                    <option value="medium">Medium Level</option>
-                    <option value="hard">Hard Level</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
                   </select>
                 </div>
               </div>
