@@ -42,7 +42,7 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
                 </div>
                 <div className="col-md-1 d-flex justify-content-start align-items-center">
                     <button className="equipment-button-delete" onClick={ () => deleteEquipment(equipment._id)}><span>&#x2715;</span></button>
-                    <p className="hide">Delete</p>
+                    {/* <p className="hide">Delete</p> */}
                 </div>
             </div>
         </div>
