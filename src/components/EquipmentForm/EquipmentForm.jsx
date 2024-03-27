@@ -245,7 +245,7 @@ function EquipmentForm({ addEquipment }) {
                     </div>
 
                 </div>
-                <button type="submit">ADD EQUIPMENT</button>
+                <button type="submit" className="equipment-button">ADD EQUIPMENT</button>
             </form>
         </div>
     );

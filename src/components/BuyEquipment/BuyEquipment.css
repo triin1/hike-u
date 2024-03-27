@@ -1,0 +1,27 @@
+.buy-equipment {
+    padding: 10px 50px;
+    z-index: 1;
+    text-align: left;
+    display: flex;
+    flex-flow: column wrap;
+    height: 300px;
+    position: relative
+}
+
+.equip-a {
+    color: black;
+    text-decoration: underline;
+    padding: 0 20px
+}
+
+.collab-container {
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-right: 50px;
+}
+
+.collab-container > p > a {
+    color: white;
+    text-decoration: underline;
+}

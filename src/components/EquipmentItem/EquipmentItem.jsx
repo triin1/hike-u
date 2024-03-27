@@ -17,17 +17,35 @@ function EquipmentItem( {equipment, deleteEquipment, setEquipmentItems} ) {
     }
 
     return (
-        <div className="item-container"> 
-            <p className="item-name"><button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)}>-</button>{equipment.quantity}<button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)}>+</button> {equipment.name}</p>
-            <div className="cat-container">
-                {equipment.categories.map((cat, index) => (
-                    <p key={index} className="cat-item">{cat}</p>
-                ))}
+        <div className="container"> 
+            <div className="row">
+                <div className="col-md-1">
+                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity - 1)} className="equipment-button" role="button">-</button>
+                </div>
+                <div className="col-md-1">
+                    <div className="">
+                        {equipment.quantity}
+                    </div>
+                </div>
+                <div className="col-md-1">
+                    <button onClick={() => handleQuantityChange(equipment._id, equipment.quantity + 1)} className="equipment-button" role="button">+
+                    </button>
+                </div>
+                <div className="col-md-2">
+                    {equipment.name}
+                </div>
+                <div className="col-md-6">
+                    <div className="cat-container">
+                        {equipment.categories.map((cat, index) => (
+                            <p key={index} className="cat-item">{cat}</p>
+                        ))}
+                    </div>
+                </div>
+                <div className="col-md-1">
+                    <button className="equipment-button-delete" onClick={ () => deleteEquipment(equipment._id)}><span role="img">{String.fromCodePoint(10060)}</span></button>
+                    <p className="hide">Delete</p>
+                </div>
             </div>
-        <div>
-            <button className="hover-bin" onClick={ () => deleteEquipment(equipment._id)}><span role="img">{String.fromCodePoint(10060)}</span></button>
-            <p className="hide">Delete item</p>
-        </div>
         </div>
     )
 };

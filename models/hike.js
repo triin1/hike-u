@@ -40,10 +40,7 @@ const hikeSchema = new Schema({
     endDate: {
         type: Date,
     },
-    equipment: [{
-        type: Schema.Types.ObjectId,
-        ref: "equipment",
-    }],
+    equipments: [String],
     journal: {
         type: Schema.Types.ObjectId
     },

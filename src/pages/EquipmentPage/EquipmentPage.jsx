@@ -52,13 +52,14 @@ function EquipmentPage() {
                 </div>
             </div>
             
+           
+
             <div className="row">
                 <div className="col-md-5">
-                    <BuyEquipment />
+                        <BuyEquipment />
                 </div>
                 <div className="col-md-7"></div>
             </div>
-
         </div>
     )
 };

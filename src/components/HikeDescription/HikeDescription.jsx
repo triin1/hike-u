@@ -10,7 +10,7 @@ function HikeDescription({updateHikeState}) {
         <div>
             <div className="mb-3">
                 <label className="form-label">Title</label>
-                <input onChange={_handleChange} name="title" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter the title in here"/>
+                <input onChange={_handleChange} name="title" type="text" className="form-control" id="exampleFormControlInput1" placeholder="Enter the title in here" />
             </div>
             <div className="mb-3">
                 <label className="form-label">Hike description</label>
@@ -19,21 +19,5 @@ function HikeDescription({updateHikeState}) {
         </div>
     )
 }
-
-// function HikeDescription() {
-//     return (
-//         <>
-//             <div className="row">
-//                 <div className="col-4" >1</div>
-//                 <div className="col-8" >2</div>
-//             </div>
-//             <div className="row">
-//                 <div className="col-4" >1</div>
-//                 <div className="col-8" >2</div>
-//             </div>
-//         </>
-
-//     )
-// }
 
 export default HikeDescription;
