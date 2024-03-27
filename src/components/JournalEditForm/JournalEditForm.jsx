@@ -46,7 +46,7 @@ export default function JournalEditForm({
               </div>
 
               <div className="row g-3">
-                {/* <div className="col-6">
+                <div className="col-6">
                   <label className="form-label">Hiking Date</label>
                   <input
                     className="form-control"
@@ -54,13 +54,13 @@ export default function JournalEditForm({
                     type="date"
                     value={fetchedJournal?.date}
                     onChange={(event) =>
-                      setFetchedJournal({
-                        ...fetchedJournal,
+                      setEditJournal({
+                        ...editJournal,
                         date: event.target.value,
                       })
                     }
                   />
-                </div> */}
+                </div>
 
                 <div className="col-6">
                   <label className="form-label">Difficulty</label>
