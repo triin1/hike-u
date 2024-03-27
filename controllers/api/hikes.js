@@ -24,21 +24,12 @@ async function create(req, res) {
             equipments, 
             spots,
             user: user._id
-        });
-        console.log(hike);
-       // hike.spots.push(req.body.spots);
-        // await hike.save();
-        // console.log(hike);
-
-        res.json(hike);
-        
+        })
+        res.status(200)
     } catch (err) {
         res.status(400).json(`Creating Hike error on database: ${err}`)
     }
 }
-
-    
-    
 
 async function index(req, res) {
     try {
@@ -50,8 +41,19 @@ async function index(req, res) {
     }
 }
 
+async function show(req, res) {
+    try {
+        const id = req.params.id
+        const hikes = await Hike.findById(id)
+        res.status(200).json(hikes)
+    } catch (err) {
+        res.status(400).json(`Get hike index detail on database: ${err}`)
+    }
+}
+
 module.exports = {
     create,
-    index
+    index,
+    show
 }
 

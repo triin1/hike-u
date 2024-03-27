@@ -30,6 +30,7 @@ export default function JournalDetail({ journalDetail }) {
                 </button>
               </p>
 
+
               <p className="card-text">{journalDetail.content}</p>
             </div>
           </div>

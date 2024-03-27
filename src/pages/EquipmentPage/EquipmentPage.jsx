@@ -55,6 +55,8 @@ function EquipmentPage() {
                 </div>
             </div>
             
+           
+
             <div className="row">
                 <div className="col-md-5">
                         <BuyEquipment />

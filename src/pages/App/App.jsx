@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../../components/NavBar/NavBar";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import HomePage from "../HomePage/HomePage";
+import HikeDetail from "../../components/HikeDetail/HikeDetail";
 import EquipmentPage from "../EquipmentPage/EquipmentPage";
 import JournalPage from "../JournalPage/JournalPage";
 import JournalFormPage from "../JournalFormPage/JournalFormPage";
@@ -31,6 +32,7 @@ function App() {
               <Route path="/adventures" element={<HikePage />} />
               <Route path="/journals/:id" element={<JournalDetailPage />} />
               <Route path="/journals/:id/edit" element={<JournalEditPage />} />
+              <Route path="/hikes/hike/:id" element={<HikeDetail />} />
             </Routes>
           </>
         </Layout>

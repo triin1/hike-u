@@ -53,10 +53,10 @@ export default function JournalPage() {
     <div className="container-fluid">
       <div className="row">
         <main className="col-md-12 ms-sm-auto col-lg-12 px-md-4">
-          {/* going to create journal form page !!! */}
+          {/* going to create journal form page !!!
           <Link to="/journals/new">
             <button>Create Journal</button>
-          </Link>
+          </Link> */}
 
           <JournalList journalList={journalList} handleDelete={handleDelete} />
         </main>
