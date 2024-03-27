@@ -25,13 +25,14 @@ const hikeSchema = new Schema({
         type: String,
         required: true
     },
-    latitude: {
-        type: Number,
-
+    startLocation: {
+        type: [Number]
     },
-    longtitude: {
-        type: Number,
-
+    endLocation: {
+        type: [Number]
+    },
+    description: {
+        type: String,
     },
     startDate: {
         type: Date,
@@ -39,14 +40,16 @@ const hikeSchema = new Schema({
     endDate: {
         type: Date,
     },
-    equipment: [{
-        type: Schema.Types.ObjectId,
-        ref: "equipment",
-    }],
+    equipments: [String],
     journal: {
         type: Schema.Types.ObjectId
     },
-    spots: [spotSchema]
+    spots: [spotSchema],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 }, {
     timestamps: true
 })

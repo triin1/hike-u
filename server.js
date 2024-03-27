@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
-app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "build")));
 
 // Put API routes here, before the "catch all" route
@@ -31,6 +30,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/journals", require("./routes/api/journals"));
 app.use("/api/equipment", require("./routes/api/equipment"));
 app.use("/api/hikes/spots", require("./routes/api/spots"));
+app.use("/api/hikes/hike", require("./routes/api/hikes"))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
