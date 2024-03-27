@@ -4,8 +4,9 @@ import Achive from "../Achive/Achive";
 import JournalSearch from "../JournalSearch/JournalSearch";
 import JournalListItem from "../JournalListItem/JournalListItem";
 import Newsletter from "../Newsletter/Newsletter";
+import JournalHikePlan from "../JournalHikePlan/JournalHikePlan";
 
-export default function JournalList({ journalList, handleDelete }) {
+export default function JournalList({ journalList, handleDelete, hikePlan }) {
   const [reverse, setReverse] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -108,6 +109,11 @@ export default function JournalList({ journalList, handleDelete }) {
           {/* Newsletter */}
           <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
             <Newsletter />
+          </div>
+
+          {/* Hikeplan */}
+          <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+            <JournalHikePlan hikePlan={hikePlan} />
           </div>
         </div>
       </div>

@@ -3,9 +3,11 @@ import { deleteJournal } from "../../utilities/journals-api";
 import JournalList from "../../components/JournalList/JournalList";
 import { getJournal } from "../../utilities/journals-api";
 import { Link, useLocation } from "react-router-dom";
+import { getAllHikePlan } from "../../utilities/hikes-api";
 
 export default function JournalPage() {
   const [journalList, setJournalList] = useState([]);
+  const [hikePlan, setHikePlan] = useState([]);
 
   const location = useLocation();
 
@@ -49,6 +51,19 @@ export default function JournalPage() {
     }
   }, [location.search]);
 
+  //fetch all hike plans
+  useEffect(() => {
+    (async () => {
+      try {
+        const hikePlans = await getAllHikePlan();
+        console.log("hikePlan", hikePlans);
+        setHikePlan(hikePlans);
+      } catch (err) {
+        console.log("loadding hike plan errors", err);
+      }
+    })();
+  }, []);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -58,7 +73,11 @@ export default function JournalPage() {
             <button>Create Journal</button>
           </Link>
 
-          <JournalList journalList={journalList} handleDelete={handleDelete} />
+          <JournalList
+            journalList={journalList}
+            handleDelete={handleDelete}
+            hikePlan={hikePlan}
+          />
         </main>
       </div>
     </div>
