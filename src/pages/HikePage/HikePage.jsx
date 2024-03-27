@@ -22,11 +22,7 @@ function HikePage() {
         startDate: null,
         endDate: null,
         equipments: [],
-<<<<<<< HEAD
-        spots: []
-=======
         spots:[]
->>>>>>> a2875733921f6c5042c0bafaeb68d366e270ea5c
     });
 
     const [forecast, setForecast] = useState(null)
@@ -62,18 +58,10 @@ function HikePage() {
                 <HikeWeatherForecast forecast={forecast} />
             </div>
             <HikeDescription updateHikeState={updateHikeState} />
-<<<<<<< HEAD
-            <HikeDate updateHikeState={updateHikeState} hike={hike} />
-            <HikeStopsList updateHikeState={updateHikeState} />
-            <HikeDetails />
-            <button>Save Hike Plan</button>
-=======
             <HikeDate updateHikeState={updateHikeState} />
             <HikeStopsList />
             <HikeEquipment updateHikeState={updateHikeState} />
             <HikeSavePlan getHikeState = {getHikeState} />
-            
->>>>>>> a2875733921f6c5042c0bafaeb68d366e270ea5c
         </div>
     )
 }
