@@ -3,7 +3,7 @@ import HikeStopsForm from "../HikeStopsForm/HikeStopsForm";
 import HikeStopItem from "../HikeStopItem/HikeStopItem";
 import * as spotsAPI from "../../utilities/hikes-api";
 
-export default function HikeStopsList() {
+export default function HikeStopsList({updateHikeState}) {
 
     const [stops, setStops] = useState([]);
 
