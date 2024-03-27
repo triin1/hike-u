@@ -37,7 +37,7 @@ async function index(req, res) {
   try {
     let journals;
     const searchTerm = req.query.searchTerm;
-
+    //if there is searchTerm input
     if (searchTerm) {
       journals = await Journal.find({
         $or: [
@@ -48,6 +48,7 @@ async function index(req, res) {
         .populate("user")
         .sort({ date: -1 });
     } else {
+      //no search term, fetch all journals
       journals = await Journal.find({}).populate("user").sort({ date: -1 });
     }
 
