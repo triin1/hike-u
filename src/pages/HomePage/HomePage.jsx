@@ -9,7 +9,7 @@ export default function HomePage() {
   useEffect(() => {
     async function getPlans() {
       const plans = await hikeAPI.getAllHikePlan()
-      console.log(plans)
+      setHikePlans(plans)
     }
     getPlans()
   }, [])
