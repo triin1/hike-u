@@ -29,6 +29,12 @@ Being avid hikers, we have created a comprehensive application for hike planning
 The application is currently not deployed. After cloning the repository make sure you install dependencies:
 ```
 npm install
+npm run build
+```
+Then start the back-end and front-end server:
+```
+nodemon server
+npm start
 ```
 
 
