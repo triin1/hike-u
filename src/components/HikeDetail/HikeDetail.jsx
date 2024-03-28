@@ -74,7 +74,7 @@ function HikeDetail() {
 
             <div className="list-container list-container-detail " >
                 {detail.spots && <div> <div className="list-title list-title-detail " >Your Spots:</div> <ul className="list-group list-group-flush list-group-detail " >{detail.spots.map((spot, index) => <li className="list-group-item" key={index} >{spot}</li>)}</ul></div>}
-                {detail.equipments && <div> <div className="list-title list-title-detail " >Your Equipments:</div> <ul className="list-group list-group-flush list-group-detail " >{detail.equipments.map((equipment, index) => <li className="list-group-item" key={index} >{equipment}</li>)}</ul></div>}
+                {detail.equipments && <div> <div className="list-title list-title-detail " >Your Equipment:</div> <ul className="list-group list-group-flush list-group-detail " >{detail.equipments.map((equipment, index) => <li className="list-group-item" key={index} >{equipment}</li>)}</ul></div>}
             </div>
             <div className="btn-container" >
                 <Link to="/journals/new"><button className="create-btn" >Create Journal</button></Link>
