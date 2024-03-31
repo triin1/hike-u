@@ -3,8 +3,6 @@ const cloudinary = require("../../utils/cloudinary");
 
 async function create(req, res) {
   try {
-    console.log("create journal", req.body);
-
     // Validate input data
     const { title, date, difficulty, content } = req.body;
     if (!title || !date || !difficulty || !content) {
@@ -49,7 +47,9 @@ async function index(req, res) {
         .sort({ date: -1 });
     } else {
       //no search term, fetch all journals
-      journals = await Journal.find({}).populate("user").sort({ date: -1 });
+      journals = await Journal.find({ user: req.user._id })
+        .populate("user")
+        .sort({ date: -1 });
     }
 
     res.json(journals);
