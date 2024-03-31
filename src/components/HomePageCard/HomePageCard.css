@@ -1,34 +1,46 @@
 .card-img-top-home {
-    width: auto;
-    height: auto;
+  width: auto;
+  height: auto;
 }
 
 .card-home {
-    border-radius: 0px;
-    border: 0.5px solid rgb(238, 238, 238);
-    transition: 0.2s
+  border-radius: 0px;
+  border: 0.5px solid rgb(238, 238, 238);
+  transition: 0.2s;
 }
 
 .card-home:hover {
-    background-color: #7AA2E3;
-    color: white;
-    scale: 0.98;
+  background-color: #7aa2e3;
+  color: white;
+  scale: 0.98;
 }
 
 .card-home img {
-    border-radius: 0px;
+  border-radius: 0px;
 }
 
 .card-title-home {
-    font-weight: bold;
-    font-size: 40px;
+  font-weight: bold;
+  font-size: 25px;
 }
 
 .small-home {
-    font-weight: bolder;
-} 
+  font-weight: bolder;
+}
 
 .p-home {
-    margin-top: 10px;
-    font-size: 22px;
+  color: rgb(74, 72, 72);
+  margin-top: 10px;
+  font-size: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-height: 1.5em;
+  max-height: 4.5em;
+}
+
+.card-img-top {
+  height: 350px;
 }
