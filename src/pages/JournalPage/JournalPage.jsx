@@ -2,12 +2,59 @@ import { useState, useEffect } from "react";
 import { deleteJournal } from "../../utilities/journals-api";
 import JournalList from "../../components/JournalList/JournalList";
 import { getJournal } from "../../utilities/journals-api";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Achive from "../../components/Achive/Achive";
+import JournalSearch from "../../components/JournalSearch/JournalSearch";
+import Newsletter from "../../components/Newsletter/Newsletter";
 
 export default function JournalPage() {
   const [journalList, setJournalList] = useState([]);
-
+  const [selectedDate, setSelectedDate] = useState(null);
   const location = useLocation();
+
+  // Archive category setting
+  const monthYear = journalList.map((j) => {
+    const date = new Date(j.date);
+    const year = date.getFullYear();
+    const month = date.toLocaleString("default", { month: "long" });
+    return { month, year };
+  });
+  const uniqueMonthYear = monthYear.filter((item, index, array) => {
+    // Find the index of the first occurrence of the current item
+    const firstIndex = array.findIndex(
+      (obj) => obj.month === item.month && obj.year === item.year
+    );
+    // Return whether the current index is equal to the first index
+    return index === firstIndex;
+  });
+  function handleDateSelect(index) {
+    const selectedMonthYear = uniqueMonthYear[index];
+    if (
+      selectedDate &&
+      selectedDate.month === selectedMonthYear.month &&
+      selectedDate.year === selectedMonthYear.year
+    ) {
+      // Clear the selected date to revert back to original list
+      setSelectedDate(null);
+    } else {
+      setSelectedDate(selectedMonthYear);
+    }
+  }
+
+  const filteredJournalList = selectedDate
+    ? journalList.filter((journal) => {
+        const journalDate = new Date(journal.date);
+        const journalMonth = journalDate.toLocaleString("default", {
+          month: "long",
+        });
+        const journalYear = journalDate.getFullYear();
+
+        return (
+          journalMonth === selectedDate.month &&
+          journalYear === selectedDate.year
+        );
+      })
+    : journalList;
 
   async function handleDelete(journalId) {
     try {
@@ -53,12 +100,37 @@ export default function JournalPage() {
     <div className="container-fluid">
       <div className="row">
         <main className="col-md-12 ms-sm-auto col-lg-12 px-md-4">
-          {/* going to create journal form page !!!
-          <Link to="/journals/new">
-            <button>Create Journal</button>
-          </Link> */}
+          <div className="row d-flex">
+            {/* middel part */}
+            <div className="col-xl-8 py-5 px-md-5">
+              <JournalList
+                filteredJournalList={filteredJournalList}
+                handleDelete={handleDelete}
+              />
+            </div>
 
-          <JournalList journalList={journalList} handleDelete={handleDelete} />
+            {/* right side */}
+            <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
+              {/* search bar */}
+              <div className="row row-3 search-bar">
+                <JournalSearch />
+              </div>
+
+              {/* Achives */}
+              <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+                <Achive
+                  uniqueMonthYear={uniqueMonthYear}
+                  selectedDate={selectedDate}
+                  handleDateSelect={handleDateSelect}
+                />
+              </div>
+
+              {/* Newsletter */}
+              <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
+                <Newsletter />
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

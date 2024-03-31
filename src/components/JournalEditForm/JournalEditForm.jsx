@@ -23,14 +23,6 @@ export default function JournalEditForm({
     }
   }
 
-  // const formatDate = (dateString) => {
-  //   const dateObject = new Date(dateString);
-  //   const year = dateObject.getFullYear();
-  //   const month = String(dateObject.getMonth() + 1).padStart(2, "0"); // Month is zero-based
-  //   const day = String(dateObject.getDate()).padStart(2, "0");
-  //   return `${year}-${month}-${day}`;
-  // };
-
   return (
     <>
       <div className="row justify-content-center">
@@ -54,22 +46,6 @@ export default function JournalEditForm({
               </div>
 
               <div className="row g-3">
-                {/* <div className="col-6">
-                  <label className="form-label">Hiking Date</label>
-                  <input
-                    className="form-control"
-                    id="date"
-                    type="date"
-                    value={formatDate(editJournal?.date)}
-                    onChange={(event) =>
-                      setEditJournal({
-                        ...editJournal,
-                        date: event.target.value,
-                      })
-                    }
-                  />
-                </div> */}
-
                 <div className="col-6">
                   <label className="form-label">Difficulty</label>
                   <select
