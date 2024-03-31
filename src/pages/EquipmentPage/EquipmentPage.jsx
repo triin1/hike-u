@@ -37,8 +37,7 @@ function EquipmentPage() {
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <h1 className="fw-bold pt-5 ps-5 pb-3">Manage your equipment</h1>
-                    
+                    <h1 className="display-5 fw-bold pt-5 ps-5 pb-3">Manage your equipment</h1>
                 </div>
             </div>
 
