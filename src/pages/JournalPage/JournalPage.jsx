@@ -3,9 +3,7 @@ import { deleteJournal } from "../../utilities/journals-api";
 import JournalList from "../../components/JournalList/JournalList";
 import { getJournal } from "../../utilities/journals-api";
 import { useLocation } from "react-router-dom";
-import Achive from "../../components/Achive/Achive";
-import JournalSearch from "../../components/JournalSearch/JournalSearch";
-import Newsletter from "../../components/Newsletter/Newsletter";
+import JournalSideBar from "../../components/JournalSideBar/JournalSideBar";
 
 export default function JournalPage() {
   const [journalList, setJournalList] = useState([]);
@@ -111,24 +109,11 @@ export default function JournalPage() {
 
             {/* right side */}
             <div className="col-xl-3 ftco-animate bg-light pt-5 fadeInUp ftco-animated journalSideBar">
-              {/* search bar */}
-              <div className="row row-3 search-bar">
-                <JournalSearch />
-              </div>
-
-              {/* Achives */}
-              <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
-                <Achive
-                  uniqueMonthYear={uniqueMonthYear}
-                  selectedDate={selectedDate}
-                  handleDateSelect={handleDateSelect}
-                />
-              </div>
-
-              {/* Newsletter */}
-              <div className="sidebar-box ftco-animate fadeInUp ftco-animated row-cols-md-1">
-                <Newsletter />
-              </div>
+              <JournalSideBar
+                uniqueMonthYear={uniqueMonthYear}
+                selectedDate={selectedDate}
+                handleDateSelect={handleDateSelect}
+              />
             </div>
           </div>
         </main>
