@@ -103,3 +103,10 @@
     background-color: rgb(79, 201, 79);
 }
 
+.delete-btn {
+    background-color: rgb(250, 112, 112);
+}
+
+.delete-btn:hover {
+    background-color: rgb(244, 63, 39);
+}

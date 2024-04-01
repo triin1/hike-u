@@ -21,6 +21,10 @@ function HikeDetail() {
     const [forecast, setForecast] = useState(null);
     const [zoom, setZoom] = useState(9);
 
+    const _deleteHike = () => {
+        hikeAPI.deleteHikePlan(id);
+    }
+
     useEffect(() => {
         async function getDetail() {
             const hikeDetail = await hikeAPI.getHikeDetail(id)
@@ -78,6 +82,9 @@ function HikeDetail() {
             </div>
             <div className="btn-container" >
                 <Link to="/journals/new"><button className="create-btn" >Create Journal</button></Link>
+            </div>
+            <div className="btn-container" >
+                <Link to="/"><button onClick={_deleteHike} className="create-btn delete-btn" >Delete Plan</button></Link>
             </div>
         </div>
     )

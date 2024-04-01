@@ -19,6 +19,11 @@ export async function getAllHikePlan() {
     return sendRequest(`${BASE_URL}/hike/index`, "GET")
 }
 
+export async function deleteHikePlan(id) {
+    return sendRequest(`${BASE_URL}/hike/${id}/delete`, "GET")
+}
+
 export async function getHikeDetail(id) {
     return sendRequest(`${BASE_URL}/hike/${id}`, "GET")
 }
+

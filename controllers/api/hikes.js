@@ -51,9 +51,20 @@ async function show(req, res) {
     }
 }
 
+async function deleteHike(req, res) {
+    try {
+        const id = req.params.id
+        const deletedHike = await Hike.findByIdAndDelete(id)
+        res.status(200)
+    } catch (err) {
+        res.status(400).json({ message: `Error deleting hike: ${err.message}` });
+    }
+}
+
 module.exports = {
     create,
     index,
-    show
+    show,
+    delete:deleteHike
 }
 
