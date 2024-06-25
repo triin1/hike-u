@@ -32,7 +32,7 @@ async function login(req, res) {
     }
 }
 
-// helper funciton 
+// helper function 
 function createJWT(user) {
     return jwt.sign(
         // data payload
